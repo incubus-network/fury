@@ -3,9 +3,9 @@ package fury.hard.v1beta1;
 
 import "cosmos/base/v1beta1/coin.proto";
 import "cosmos_proto/cosmos.proto";
+import "fury/hard/v1beta1/hard.proto";
 import "gogoproto/gogo.proto";
 import "google/protobuf/timestamp.proto";
-import "fury/hard/v1beta1/hard.proto";
 
 option go_package = "github.com/incubus-network/fury/x/hard/types";
 
