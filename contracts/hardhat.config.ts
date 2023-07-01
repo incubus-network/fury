@@ -15,7 +15,7 @@ const config: HardhatUserConfig = {
     },
   },
   networks: {
-    // kvtool's local network
+    // futool's local network
     fury: {
       url: "http://127.0.0.1:8545",
       accounts: [

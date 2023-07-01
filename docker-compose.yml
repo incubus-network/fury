@@ -1,58 +1,58 @@
 version: '3'
 
 services:
-  kvdnode0:
-    container_name: kvdnode0
+  fudnode0:
+    container_name: fudnode0
     image: "fury/furynode"
     ports:
       - "26656-26657:26656-26657"
     environment:
       - ID=0
-      - LOG=${LOG:-kvd.log}
+      - LOG=${LOG:-fud.log}
     volumes:
-      - ./build:/kvd:Z
+      - ./build:/fud:Z
     networks:
       localnet:
         ipv4_address: 192.168.10.2
 
-  kvdnode1:
-    container_name: kvdnode1
+  fudnode1:
+    container_name: fudnode1
     image: "fury/furynode"
     ports:
       - "26659-26660:26656-26657"
     environment:
       - ID=1
-      - LOG=${LOG:-kvd.log}
+      - LOG=${LOG:-fud.log}
     volumes:
-      - ./build:/kvd:Z
+      - ./build:/fud:Z
     networks:
       localnet:
         ipv4_address: 192.168.10.3
 
-  kvdnode2:
-    container_name: kvdnode2
+  fudnode2:
+    container_name: fudnode2
     image: "fury/furynode"
     environment:
       - ID=2
-      - LOG=${LOG:-kvd.log}
+      - LOG=${LOG:-fud.log}
     ports:
       - "26661-26662:26656-26657"
     volumes:
-      - ./build:/kvd:Z
+      - ./build:/fud:Z
     networks:
       localnet:
         ipv4_address: 192.168.10.4
 
-  kvdnode3:
-    container_name: kvdnode3
+  fudnode3:
+    container_name: fudnode3
     image: "fury/furynode"
     environment:
       - ID=3
-      - LOG=${LOG:-kvd.log}
+      - LOG=${LOG:-fud.log}
     ports:
       - "26663-26664:26656-26657"
     volumes:
-      - ./build:/kvd:Z
+      - ./build:/fud:Z
     networks:
       localnet:
         ipv4_address: 192.168.10.5

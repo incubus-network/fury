@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>Label</key>
-	<string>io.fury.kvd</string>
+	<string>io.fury.fud</string>
 	<key>ProgramArguments</key>
 	<array>
 		<!--Assumes user is "fury"-->
-		<string>/Users/fury/go/bin/kvd</string>
+		<string>/Users/fury/go/bin/fud</string>
     <string>start</string>
 	</array>
 	<key>RunAtLoad</key>

@@ -18,7 +18,7 @@ type SuiteConfig struct {
 	// A funded account used to fnd all other accounts.
 	FundedAccountMnemonic string
 
-	// A config for using kvtool local networks for the test run
+	// A config for using futool local networks for the test run
 	Kvtool *KvtoolConfig
 	// A config for connecting to a running network
 	LiveNetwork *LiveNetworkConfig
@@ -36,7 +36,7 @@ type SuiteConfig struct {
 // KvtoolConfig wraps configuration options for running the end-to-end test suite against
 // a locally running chain. This config must be defined if E2E_RUN_KVTOOL_NETWORKS is true.
 type KvtoolConfig struct {
-	// The fury.configTemplate flag to be passed to kvtool, usually "master".
+	// The fury.configTemplate flag to be passed to futool, usually "master".
 	// This allows one to change the base genesis used to start the chain.
 	FuryConfigTemplate string
 
@@ -75,8 +75,8 @@ func ParseSuiteConfig() SuiteConfig {
 
 	useKvtoolNetworks := mustParseBool("E2E_RUN_KVTOOL_NETWORKS")
 	if useKvtoolNetworks {
-		kvtoolConfig := ParseKvtoolConfig()
-		config.Kvtool = &kvtoolConfig
+		futoolConfig := ParseKvtoolConfig()
+		config.Kvtool = &futoolConfig
 	} else {
 		liveNetworkConfig := ParseLiveNetworkConfig()
 		config.LiveNetwork = &liveNetworkConfig

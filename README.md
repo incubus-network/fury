@@ -34,8 +34,8 @@ git checkout v0.23.0
 make install
 ```
 
-End-to-end tests of Fury use a tool for generating networks with different configurations: [kvtool](https://github.com/Incubus-Network/kvtool).
-This is included as a git submodule at [`tests/e2e/kvtool`](tests/e2e/kvtool/).
+End-to-end tests of Fury use a tool for generating networks with different configurations: [futool](https://github.com/Incubus-Network/futool).
+This is included as a git submodule at [`tests/e2e/futool`](tests/e2e/futool/).
 When first cloning the repository, if you intend to run the e2e integration tests, you must also
 clone the submodules:
 ```bash

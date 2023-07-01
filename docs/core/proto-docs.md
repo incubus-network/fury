@@ -276,6 +276,29 @@
   
     - [Msg](#fury.evmutil.v1beta1.Msg)
   
+- [fury/furydist/v1beta1/params.proto](#fury/furydist/v1beta1/params.proto)
+    - [CoreReward](#fury.furydist.v1beta1.CoreReward)
+    - [InfrastructureParams](#fury.furydist.v1beta1.InfrastructureParams)
+    - [Params](#fury.furydist.v1beta1.Params)
+    - [PartnerReward](#fury.furydist.v1beta1.PartnerReward)
+    - [Period](#fury.furydist.v1beta1.Period)
+  
+- [fury/furydist/v1beta1/genesis.proto](#fury/furydist/v1beta1/genesis.proto)
+    - [GenesisState](#fury.furydist.v1beta1.GenesisState)
+  
+- [fury/furydist/v1beta1/proposal.proto](#fury/furydist/v1beta1/proposal.proto)
+    - [CommunityPoolMultiSpendProposal](#fury.furydist.v1beta1.CommunityPoolMultiSpendProposal)
+    - [CommunityPoolMultiSpendProposalJSON](#fury.furydist.v1beta1.CommunityPoolMultiSpendProposalJSON)
+    - [MultiSpendRecipient](#fury.furydist.v1beta1.MultiSpendRecipient)
+  
+- [fury/furydist/v1beta1/query.proto](#fury/furydist/v1beta1/query.proto)
+    - [QueryBalanceRequest](#fury.furydist.v1beta1.QueryBalanceRequest)
+    - [QueryBalanceResponse](#fury.furydist.v1beta1.QueryBalanceResponse)
+    - [QueryParamsRequest](#fury.furydist.v1beta1.QueryParamsRequest)
+    - [QueryParamsResponse](#fury.furydist.v1beta1.QueryParamsResponse)
+  
+    - [Query](#fury.furydist.v1beta1.Query)
+  
 - [fury/hard/v1beta1/hard.proto](#fury/hard/v1beta1/hard.proto)
     - [Borrow](#fury.hard.v1beta1.Borrow)
     - [BorrowInterestFactor](#fury.hard.v1beta1.BorrowInterestFactor)
@@ -421,29 +444,6 @@
     - [MsgUnblockAddressResponse](#fury.issuance.v1beta1.MsgUnblockAddressResponse)
   
     - [Msg](#fury.issuance.v1beta1.Msg)
-  
-- [fury/furydist/v1beta1/params.proto](#fury/furydist/v1beta1/params.proto)
-    - [CoreReward](#fury.furydist.v1beta1.CoreReward)
-    - [InfrastructureParams](#fury.furydist.v1beta1.InfrastructureParams)
-    - [Params](#fury.furydist.v1beta1.Params)
-    - [PartnerReward](#fury.furydist.v1beta1.PartnerReward)
-    - [Period](#fury.furydist.v1beta1.Period)
-  
-- [fury/furydist/v1beta1/genesis.proto](#fury/furydist/v1beta1/genesis.proto)
-    - [GenesisState](#fury.furydist.v1beta1.GenesisState)
-  
-- [fury/furydist/v1beta1/proposal.proto](#fury/furydist/v1beta1/proposal.proto)
-    - [CommunityPoolMultiSpendProposal](#fury.furydist.v1beta1.CommunityPoolMultiSpendProposal)
-    - [CommunityPoolMultiSpendProposalJSON](#fury.furydist.v1beta1.CommunityPoolMultiSpendProposalJSON)
-    - [MultiSpendRecipient](#fury.furydist.v1beta1.MultiSpendRecipient)
-  
-- [fury/furydist/v1beta1/query.proto](#fury/furydist/v1beta1/query.proto)
-    - [QueryBalanceRequest](#fury.furydist.v1beta1.QueryBalanceRequest)
-    - [QueryBalanceResponse](#fury.furydist.v1beta1.QueryBalanceResponse)
-    - [QueryParamsRequest](#fury.furydist.v1beta1.QueryParamsRequest)
-    - [QueryParamsResponse](#fury.furydist.v1beta1.QueryParamsResponse)
-  
-    - [Query](#fury.furydist.v1beta1.Query)
   
 - [fury/liquid/v1beta1/query.proto](#fury/liquid/v1beta1/query.proto)
     - [QueryDelegatedBalanceRequest](#fury.liquid.v1beta1.QueryDelegatedBalanceRequest)
@@ -4016,6 +4016,283 @@ Msg defines the evmutil Msg service.
 
 
 
+<a name="fury/furydist/v1beta1/params.proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## fury/furydist/v1beta1/params.proto
+
+
+
+<a name="fury.furydist.v1beta1.CoreReward"></a>
+
+### CoreReward
+CoreReward defines the reward weights for core infrastructure providers.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `address` | [bytes](#bytes) |  |  |
+| `weight` | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="fury.furydist.v1beta1.InfrastructureParams"></a>
+
+### InfrastructureParams
+InfrastructureParams define the parameters for infrastructure rewards.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `infrastructure_periods` | [Period](#fury.furydist.v1beta1.Period) | repeated |  |
+| `core_rewards` | [CoreReward](#fury.furydist.v1beta1.CoreReward) | repeated |  |
+| `partner_rewards` | [PartnerReward](#fury.furydist.v1beta1.PartnerReward) | repeated |  |
+
+
+
+
+
+
+<a name="fury.furydist.v1beta1.Params"></a>
+
+### Params
+Params governance parameters for furydist module
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `active` | [bool](#bool) |  |  |
+| `periods` | [Period](#fury.furydist.v1beta1.Period) | repeated |  |
+| `infrastructure_params` | [InfrastructureParams](#fury.furydist.v1beta1.InfrastructureParams) |  |  |
+
+
+
+
+
+
+<a name="fury.furydist.v1beta1.PartnerReward"></a>
+
+### PartnerReward
+PartnerRewards defines the reward schedule for partner infrastructure providers.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `address` | [bytes](#bytes) |  |  |
+| `rewards_per_second` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) |  |  |
+
+
+
+
+
+
+<a name="fury.furydist.v1beta1.Period"></a>
+
+### Period
+Period stores the specified start and end dates, and the inflation, expressed as a decimal
+representing the yearly APR of FURY tokens that will be minted during that period
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `start` | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  | example "2020-03-01T15:20:00Z" |
+| `end` | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  | example "2020-06-01T15:20:00Z" |
+| `inflation` | [bytes](#bytes) |  | example "1.000000003022265980" - 10% inflation |
+
+
+
+
+
+ <!-- end messages -->
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+ <!-- end services -->
+
+
+
+<a name="fury/furydist/v1beta1/genesis.proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## fury/furydist/v1beta1/genesis.proto
+
+
+
+<a name="fury.furydist.v1beta1.GenesisState"></a>
+
+### GenesisState
+GenesisState defines the furydist module's genesis state.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `params` | [Params](#fury.furydist.v1beta1.Params) |  |  |
+| `previous_block_time` | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
+
+
+
+
+
+ <!-- end messages -->
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+ <!-- end services -->
+
+
+
+<a name="fury/furydist/v1beta1/proposal.proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## fury/furydist/v1beta1/proposal.proto
+
+
+
+<a name="fury.furydist.v1beta1.CommunityPoolMultiSpendProposal"></a>
+
+### CommunityPoolMultiSpendProposal
+CommunityPoolMultiSpendProposal spends from the community pool by sending to one or more
+addresses
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `title` | [string](#string) |  |  |
+| `description` | [string](#string) |  |  |
+| `recipient_list` | [MultiSpendRecipient](#fury.furydist.v1beta1.MultiSpendRecipient) | repeated |  |
+
+
+
+
+
+
+<a name="fury.furydist.v1beta1.CommunityPoolMultiSpendProposalJSON"></a>
+
+### CommunityPoolMultiSpendProposalJSON
+CommunityPoolMultiSpendProposalJSON defines a CommunityPoolMultiSpendProposal with a deposit
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `title` | [string](#string) |  |  |
+| `description` | [string](#string) |  |  |
+| `recipient_list` | [MultiSpendRecipient](#fury.furydist.v1beta1.MultiSpendRecipient) | repeated |  |
+| `deposit` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
+
+
+
+
+
+
+<a name="fury.furydist.v1beta1.MultiSpendRecipient"></a>
+
+### MultiSpendRecipient
+MultiSpendRecipient defines a recipient and the amount of coins they are receiving
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `address` | [string](#string) |  |  |
+| `amount` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
+
+
+
+
+
+ <!-- end messages -->
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+ <!-- end services -->
+
+
+
+<a name="fury/furydist/v1beta1/query.proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## fury/furydist/v1beta1/query.proto
+
+
+
+<a name="fury.furydist.v1beta1.QueryBalanceRequest"></a>
+
+### QueryBalanceRequest
+QueryBalanceRequest defines the request type for querying x/furydist balance.
+
+
+
+
+
+
+<a name="fury.furydist.v1beta1.QueryBalanceResponse"></a>
+
+### QueryBalanceResponse
+QueryBalanceResponse defines the response type for querying x/furydist balance.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `coins` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
+
+
+
+
+
+
+<a name="fury.furydist.v1beta1.QueryParamsRequest"></a>
+
+### QueryParamsRequest
+QueryParamsRequest defines the request type for querying x/furydist parameters.
+
+
+
+
+
+
+<a name="fury.furydist.v1beta1.QueryParamsResponse"></a>
+
+### QueryParamsResponse
+QueryParamsResponse defines the response type for querying x/furydist parameters.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `params` | [Params](#fury.furydist.v1beta1.Params) |  |  |
+
+
+
+
+
+ <!-- end messages -->
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+<a name="fury.furydist.v1beta1.Query"></a>
+
+### Query
+Query defines the gRPC querier service.
+
+| Method Name | Request Type | Response Type | Description | HTTP Verb | Endpoint |
+| ----------- | ------------ | ------------- | ------------| ------- | -------- |
+| `Params` | [QueryParamsRequest](#fury.furydist.v1beta1.QueryParamsRequest) | [QueryParamsResponse](#fury.furydist.v1beta1.QueryParamsResponse) | Params queries the parameters of x/furydist module. | GET|/fury/furydist/v1beta1/parameters|
+| `Balance` | [QueryBalanceRequest](#fury.furydist.v1beta1.QueryBalanceRequest) | [QueryBalanceResponse](#fury.furydist.v1beta1.QueryBalanceResponse) | Balance queries the balance of all coins of x/furydist module. | GET|/fury/furydist/v1beta1/balance|
+
+ <!-- end services -->
+
+
+
 <a name="fury/hard/v1beta1/hard.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
@@ -5957,283 +6234,6 @@ Msg defines the issuance Msg service.
 | `BlockAddress` | [MsgBlockAddress](#fury.issuance.v1beta1.MsgBlockAddress) | [MsgBlockAddressResponse](#fury.issuance.v1beta1.MsgBlockAddressResponse) | BlockAddress message type used by the issuer to block an address from holding or transferring tokens | |
 | `UnblockAddress` | [MsgUnblockAddress](#fury.issuance.v1beta1.MsgUnblockAddress) | [MsgUnblockAddressResponse](#fury.issuance.v1beta1.MsgUnblockAddressResponse) | UnblockAddress message type used by the issuer to unblock an address from holding or transferring tokens | |
 | `SetPauseStatus` | [MsgSetPauseStatus](#fury.issuance.v1beta1.MsgSetPauseStatus) | [MsgSetPauseStatusResponse](#fury.issuance.v1beta1.MsgSetPauseStatusResponse) | SetPauseStatus message type used to pause or unpause status | |
-
- <!-- end services -->
-
-
-
-<a name="fury/furydist/v1beta1/params.proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## fury/furydist/v1beta1/params.proto
-
-
-
-<a name="fury.furydist.v1beta1.CoreReward"></a>
-
-### CoreReward
-CoreReward defines the reward weights for core infrastructure providers.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `address` | [bytes](#bytes) |  |  |
-| `weight` | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="fury.furydist.v1beta1.InfrastructureParams"></a>
-
-### InfrastructureParams
-InfrastructureParams define the parameters for infrastructure rewards.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `infrastructure_periods` | [Period](#fury.furydist.v1beta1.Period) | repeated |  |
-| `core_rewards` | [CoreReward](#fury.furydist.v1beta1.CoreReward) | repeated |  |
-| `partner_rewards` | [PartnerReward](#fury.furydist.v1beta1.PartnerReward) | repeated |  |
-
-
-
-
-
-
-<a name="fury.furydist.v1beta1.Params"></a>
-
-### Params
-Params governance parameters for furydist module
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `active` | [bool](#bool) |  |  |
-| `periods` | [Period](#fury.furydist.v1beta1.Period) | repeated |  |
-| `infrastructure_params` | [InfrastructureParams](#fury.furydist.v1beta1.InfrastructureParams) |  |  |
-
-
-
-
-
-
-<a name="fury.furydist.v1beta1.PartnerReward"></a>
-
-### PartnerReward
-PartnerRewards defines the reward schedule for partner infrastructure providers.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `address` | [bytes](#bytes) |  |  |
-| `rewards_per_second` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) |  |  |
-
-
-
-
-
-
-<a name="fury.furydist.v1beta1.Period"></a>
-
-### Period
-Period stores the specified start and end dates, and the inflation, expressed as a decimal
-representing the yearly APR of FURY tokens that will be minted during that period
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `start` | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  | example "2020-03-01T15:20:00Z" |
-| `end` | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  | example "2020-06-01T15:20:00Z" |
-| `inflation` | [bytes](#bytes) |  | example "1.000000003022265980" - 10% inflation |
-
-
-
-
-
- <!-- end messages -->
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
- <!-- end services -->
-
-
-
-<a name="fury/furydist/v1beta1/genesis.proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## fury/furydist/v1beta1/genesis.proto
-
-
-
-<a name="fury.furydist.v1beta1.GenesisState"></a>
-
-### GenesisState
-GenesisState defines the furydist module's genesis state.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `params` | [Params](#fury.furydist.v1beta1.Params) |  |  |
-| `previous_block_time` | [google.protobuf.Timestamp](#google.protobuf.Timestamp) |  |  |
-
-
-
-
-
- <!-- end messages -->
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
- <!-- end services -->
-
-
-
-<a name="fury/furydist/v1beta1/proposal.proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## fury/furydist/v1beta1/proposal.proto
-
-
-
-<a name="fury.furydist.v1beta1.CommunityPoolMultiSpendProposal"></a>
-
-### CommunityPoolMultiSpendProposal
-CommunityPoolMultiSpendProposal spends from the community pool by sending to one or more
-addresses
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `title` | [string](#string) |  |  |
-| `description` | [string](#string) |  |  |
-| `recipient_list` | [MultiSpendRecipient](#fury.furydist.v1beta1.MultiSpendRecipient) | repeated |  |
-
-
-
-
-
-
-<a name="fury.furydist.v1beta1.CommunityPoolMultiSpendProposalJSON"></a>
-
-### CommunityPoolMultiSpendProposalJSON
-CommunityPoolMultiSpendProposalJSON defines a CommunityPoolMultiSpendProposal with a deposit
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `title` | [string](#string) |  |  |
-| `description` | [string](#string) |  |  |
-| `recipient_list` | [MultiSpendRecipient](#fury.furydist.v1beta1.MultiSpendRecipient) | repeated |  |
-| `deposit` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
-
-
-
-
-
-
-<a name="fury.furydist.v1beta1.MultiSpendRecipient"></a>
-
-### MultiSpendRecipient
-MultiSpendRecipient defines a recipient and the amount of coins they are receiving
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `address` | [string](#string) |  |  |
-| `amount` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
-
-
-
-
-
- <!-- end messages -->
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
- <!-- end services -->
-
-
-
-<a name="fury/furydist/v1beta1/query.proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## fury/furydist/v1beta1/query.proto
-
-
-
-<a name="fury.furydist.v1beta1.QueryBalanceRequest"></a>
-
-### QueryBalanceRequest
-QueryBalanceRequest defines the request type for querying x/furydist balance.
-
-
-
-
-
-
-<a name="fury.furydist.v1beta1.QueryBalanceResponse"></a>
-
-### QueryBalanceResponse
-QueryBalanceResponse defines the response type for querying x/furydist balance.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `coins` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated |  |
-
-
-
-
-
-
-<a name="fury.furydist.v1beta1.QueryParamsRequest"></a>
-
-### QueryParamsRequest
-QueryParamsRequest defines the request type for querying x/furydist parameters.
-
-
-
-
-
-
-<a name="fury.furydist.v1beta1.QueryParamsResponse"></a>
-
-### QueryParamsResponse
-QueryParamsResponse defines the response type for querying x/furydist parameters.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| `params` | [Params](#fury.furydist.v1beta1.Params) |  |  |
-
-
-
-
-
- <!-- end messages -->
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
-
-<a name="fury.furydist.v1beta1.Query"></a>
-
-### Query
-Query defines the gRPC querier service.
-
-| Method Name | Request Type | Response Type | Description | HTTP Verb | Endpoint |
-| ----------- | ------------ | ------------- | ------------| ------- | -------- |
-| `Params` | [QueryParamsRequest](#fury.furydist.v1beta1.QueryParamsRequest) | [QueryParamsResponse](#fury.furydist.v1beta1.QueryParamsResponse) | Params queries the parameters of x/furydist module. | GET|/fury/furydist/v1beta1/parameters|
-| `Balance` | [QueryBalanceRequest](#fury.furydist.v1beta1.QueryBalanceRequest) | [QueryBalanceResponse](#fury.furydist.v1beta1.QueryBalanceResponse) | Balance queries the balance of all coins of x/furydist module. | GET|/fury/furydist/v1beta1/balance|
 
  <!-- end services -->
 

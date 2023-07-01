@@ -1,10 +1,10 @@
 #!/bin/bash
 
-if hash kvtool 2>/dev/null; then
-  echo "[install-kvtool.sh] kvtool is already installed. skipping installation."
+if hash futool 2>/dev/null; then
+  echo "[install-futool.sh] futool is already installed. skipping installation."
   exit 0
 fi
 
-echo "[install-kvtool.sh] installing kvtool."
-cd kvtool || exit 1
+echo "[install-futool.sh] installing futool."
+cd futool || exit 1
 make install

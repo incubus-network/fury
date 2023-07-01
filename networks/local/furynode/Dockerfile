@@ -13,8 +13,8 @@ RUN apt-get update && \
     apt-get -y upgrade && \
     apt-get -y install curl jq file
 
-VOLUME [ /kvd ]
-WORKDIR /kvd
+VOLUME [ /fud ]
+WORKDIR /fud
 EXPOSE 26656 26657
 ENTRYPOINT ["/usr/bin/wrapper.sh"]
 CMD ["start"]

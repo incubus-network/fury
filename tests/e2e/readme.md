@@ -1,16 +1,16 @@
 # end-2-end tests for fury
 
-These tests use [`kvtool`](https://github.com/incubus-network/kvtool) to spin up a fury node configuration
+These tests use [`futool`](https://github.com/incubus-network/futool) to spin up a fury node configuration
 and then runs tests against the running network. It is a git sub-repository in this directory. If not
 present, you must initialize the subrepo: `git submodule update --init`.
 
 Steps to run
-1. Ensure latest `kvtool` is installed: `make update-kvtool`
+1. Ensure latest `futool` is installed: `make update-futool`
 2. Run the test suite: `make test-e2e`
-   This will build a docker image tagged `fury/fury:local` that will be run by kvtool.
+   This will build a docker image tagged `fury/fury:local` that will be run by futool.
 
-**Note:** The suite will use your locally installed `kvtool` if present. If not present, it will be
-installed. If the `kvtool` repo is updated, you must manually update your existing local binary: `make update-kvtool`
+**Note:** The suite will use your locally installed `futool` if present. If not present, it will be
+installed. If the `futool` repo is updated, you must manually update your existing local binary: `make update-futool`
 
 ## Configuration
 
@@ -28,7 +28,7 @@ The end-to-end tests support being run on a live network. The primary toggle for
 * `E2E_FURY_GRPC_URL`
 * `E2E_FURY_EVM_RPC_URL`
 
-See an example environment configuration with full description of all supported configurations in [`.env.live-network-example`](./.env.live-network-example). This example expects a local kvtool network to be running: `kvtool testnet bootstrap`.
+See an example environment configuration with full description of all supported configurations in [`.env.live-network-example`](./.env.live-network-example). This example expects a local futool network to be running: `futool testnet bootstrap`.
 
 When run against a live network, the suite will automatically return all the sdk funds sent to `SigningAccount`s on the chain, and will return any ERC20 balance from those accounts if the ERC20 is registered via `Chain.RegisterERC20`. The pre-deployed ERC20 that is required for the tests is registered on setup.
 

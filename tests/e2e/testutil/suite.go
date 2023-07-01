@@ -99,7 +99,7 @@ func (suite *E2eTestSuite) SetupSuite() {
 	} else if suiteConfig.LiveNetwork != nil {
 		suite.runner = suite.SetupLiveNetworkNodeRunner()
 	} else {
-		panic("expected either kvtool or live network configs to be defined")
+		panic("expected either futool or live network configs to be defined")
 	}
 
 	chains := suite.runner.StartChains()
@@ -167,7 +167,7 @@ func (suite *E2eTestSuite) TearDownSuite() {
 
 // SetupKvtoolNodeRunner is a helper method for building a KvtoolRunnerConfig from the suite config.
 func (suite *E2eTestSuite) SetupKvtoolNodeRunner() *runner.KvtoolRunner {
-	// upgrade tests are only supported on kvtool networks
+	// upgrade tests are only supported on futool networks
 	suite.UpgradeHeight = suite.config.Kvtool.FuryUpgradeHeight
 	suite.enableRefunds = false
 
@@ -223,9 +223,9 @@ func (suite *E2eTestSuite) SkipIfUpgradeDisabled() {
 }
 
 // FuryHomePath returns the OS-specific filepath for the fury home directory
-// Assumes network is running with kvtool installed from the sub-repository in tests/e2e/kvtool
+// Assumes network is running with futool installed from the sub-repository in tests/e2e/futool
 func (suite *E2eTestSuite) FuryHomePath() string {
-	return filepath.Join("kvtool", "full_configs", "generated", "fury", "initstate", ".fury")
+	return filepath.Join("futool", "full_configs", "generated", "fury", "initstate", ".fury")
 }
 
 // BigIntsEqual is a helper method for comparing the equality of two big ints

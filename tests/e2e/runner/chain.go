@@ -66,10 +66,10 @@ func (c *Chains) Register(name string, chain *ChainDetails) error {
 	return nil
 }
 
-// the Chain details are all hardcoded because they are currently fixed by kvtool.
+// the Chain details are all hardcoded because they are currently fixed by futool.
 // someday they may be accepted as configurable parameters.
 var (
-	kvtoolFuryChain = ChainDetails{
+	futoolFuryChain = ChainDetails{
 		RpcUrl:    "http://localhost:26657",
 		GrpcUrl:   "http://localhost:9090",
 		EvmRpcUrl: "http://localhost:8545",
@@ -77,7 +77,7 @@ var (
 		ChainId:      "furylocalnet_8888-1",
 		StakingDenom: "ufury",
 	}
-	kvtoolIbcChain = ChainDetails{
+	futoolIbcChain = ChainDetails{
 		RpcUrl:    "http://localhost:26658",
 		GrpcUrl:   "http://localhost:9092",
 		EvmRpcUrl: "http://localhost:8547",

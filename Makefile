@@ -250,7 +250,7 @@ build-docker-local-fury:
 
 # Run a 4-node testnet locally
 localnet-start: build-linux localnet-stop
-	@if ! [ -f build/node0/kvd/config/genesis.json ]; then docker run --rm -v $(CURDIR)/build:/kvd:Z fury/furynode testnet --v 4 -o . --starting-ip-address 192.168.10.2 --keyring-backend=test ; fi
+	@if ! [ -f build/node0/fud/config/genesis.json ]; then docker run --rm -v $(CURDIR)/build:/fud:Z fury/furynode testnet --v 4 -o . --starting-ip-address 192.168.10.2 --keyring-backend=test ; fi
 	docker-compose up -d
 
 localnet-stop:
@@ -301,7 +301,7 @@ test:
 
 # Run cli integration tests
 # `-p 4` to use 4 cores, `-tags cli_test` to tell go not to ignore the cli package
-# These tests use the `kvd` or `kvcli` binaries in the build dir, or in `$BUILDDIR` if that env var is set.
+# These tests use the `fud` or `kvcli` binaries in the build dir, or in `$BUILDDIR` if that env var is set.
 test-cli: build
 	@go test ./cli_test -tags cli_test -v -p 4
 
@@ -324,8 +324,8 @@ start-remote-sims:
 		-—job-definition fury-sim-master \
 		-—container-override environment=[{SIM_NAME=master-$(VERSION)}]
 
-update-kvtool:
+update-futool:
 	git submodule update
-	cd tests/e2e/kvtool && make install
+	cd tests/e2e/futool && make install
 
 .PHONY: all build-linux install clean build test test-cli test-all test-rest test-basic start-remote-sims

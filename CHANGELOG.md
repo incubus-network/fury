@@ -201,7 +201,7 @@ node with an unsafe configuration.
 
 The default tendermint pruning strategy, `pruning="syncable"` is currently
 unsafe due to a [memory leak](https://github.com/tendermint/iavl/issues/256)
-that can cause irrecoverable data loss. This patch release prevents `kvd` from
+that can cause irrecoverable data loss. This patch release prevents `fud` from
 being started with the `pruning="syncable"` configuration. Until a patch for
 tendermint is released, the ONLY pruning strategies that are safe to run are
 `everything` (an archival node) or `nothing` (only the most recent state is

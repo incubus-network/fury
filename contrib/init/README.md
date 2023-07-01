@@ -1,6 +1,6 @@
 Sample configuration files for:
 
 ```
-SystemD: kvd.service
-macOS:  io.fury.kvd.plist
+SystemD: fud.service
+macOS:  io.fury.fud.plist
 ```

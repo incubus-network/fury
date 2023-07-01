@@ -21,7 +21,7 @@ type KvtoolRunnerConfig struct {
 	SkipShutdown bool
 }
 
-// KvtoolRunner implements a NodeRunner that spins up local chains with kvtool.
+// KvtoolRunner implements a NodeRunner that spins up local chains with futool.
 // It has support for the following:
 // - running a Fury node
 // - optionally, running an IBC node with a channel opened to the Fury node
@@ -40,33 +40,33 @@ func NewKvtoolRunner(config KvtoolRunnerConfig) *KvtoolRunner {
 }
 
 // StartChains implements NodeRunner.
-// For KvtoolRunner, it sets up, runs, and connects to a local chain via kvtool.
+// For KvtoolRunner, it sets up, runs, and connects to a local chain via futool.
 func (k *KvtoolRunner) StartChains() Chains {
-	// install kvtool if not already installed
-	installKvtoolCmd := exec.Command("./scripts/install-kvtool.sh")
+	// install futool if not already installed
+	installKvtoolCmd := exec.Command("./scripts/install-futool.sh")
 	installKvtoolCmd.Stdout = os.Stdout
 	installKvtoolCmd.Stderr = os.Stderr
 	if err := installKvtoolCmd.Run(); err != nil {
-		panic(fmt.Sprintf("failed to install kvtool: %s", err.Error()))
+		panic(fmt.Sprintf("failed to install futool: %s", err.Error()))
 	}
 
-	// start local test network with kvtool
+	// start local test network with futool
 	log.Println("starting fury node")
-	kvtoolArgs := []string{"testnet", "bootstrap", "--fury.configTemplate", k.config.FuryConfigTemplate}
+	futoolArgs := []string{"testnet", "bootstrap", "--fury.configTemplate", k.config.FuryConfigTemplate}
 	// include an ibc chain if desired
 	if k.config.IncludeIBC {
-		kvtoolArgs = append(kvtoolArgs, "--ibc")
+		futoolArgs = append(futoolArgs, "--ibc")
 	}
 	// handle automated upgrade functionality, if defined
 	if k.config.EnableAutomatedUpgrade {
-		kvtoolArgs = append(kvtoolArgs,
+		futoolArgs = append(futoolArgs,
 			"--upgrade-name", k.config.FuryUpgradeName,
 			"--upgrade-height", fmt.Sprint(k.config.FuryUpgradeHeight),
 			"--upgrade-base-image-tag", k.config.FuryUpgradeBaseImageTag,
 		)
 	}
 	// start the chain
-	startFuryCmd := exec.Command("kvtool", kvtoolArgs...)
+	startFuryCmd := exec.Command("futool", futoolArgs...)
 	startFuryCmd.Env = os.Environ()
 	startFuryCmd.Env = append(startFuryCmd.Env, fmt.Sprintf("FURY_TAG=%s", k.config.ImageTag))
 	startFuryCmd.Stdout = os.Stdout
@@ -78,22 +78,22 @@ func (k *KvtoolRunner) StartChains() Chains {
 
 	// wait for chain to be live.
 	// if an upgrade is defined, this waits for the upgrade to be completed.
-	if err := waitForChainStart(kvtoolFuryChain); err != nil {
+	if err := waitForChainStart(futoolFuryChain); err != nil {
 		k.Shutdown()
 		panic(err)
 	}
 	log.Println("fury is started!")
 
 	chains := NewChains()
-	chains.Register("fury", &kvtoolFuryChain)
+	chains.Register("fury", &futoolFuryChain)
 	if k.config.IncludeIBC {
-		chains.Register("ibc", &kvtoolIbcChain)
+		chains.Register("ibc", &futoolIbcChain)
 	}
 	return chains
 }
 
 // Shutdown implements NodeRunner.
-// For KvtoolRunner, it shuts down the local kvtool network.
+// For KvtoolRunner, it shuts down the local futool network.
 // To prevent shutting down the chain (eg. to preserve logs or examine post-test state)
 // use the `SkipShutdown` option on the config.
 func (k *KvtoolRunner) Shutdown() {
@@ -102,10 +102,10 @@ func (k *KvtoolRunner) Shutdown() {
 		return
 	}
 	log.Println("shutting down fury node")
-	shutdownFuryCmd := exec.Command("kvtool", "testnet", "down")
+	shutdownFuryCmd := exec.Command("futool", "testnet", "down")
 	shutdownFuryCmd.Stdout = os.Stdout
 	shutdownFuryCmd.Stderr = os.Stderr
 	if err := shutdownFuryCmd.Run(); err != nil {
-		panic(fmt.Sprintf("failed to shutdown kvtool: %s", err.Error()))
+		panic(fmt.Sprintf("failed to shutdown futool: %s", err.Error()))
 	}
 }
