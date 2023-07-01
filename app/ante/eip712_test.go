@@ -43,7 +43,7 @@ import (
 )
 
 const (
-	ChainID       = "furytest_1-1"
+	ChainID       = "hightest_710-1"
 	USDCCoinDenom = "erc20/usdc"
 	USDCCDPType   = "erc20-usdc"
 )
@@ -570,7 +570,7 @@ func (suite *EIP712TestSuite) TestEIP712Tx() {
 			updateTx: func(txBuilder client.TxBuilder, msgs []sdk.Msg) client.TxBuilder {
 				gasAmt := sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(20)))
 				return suite.createTestEIP712CosmosTxBuilder(
-					suite.testAddr, suite.testPrivKey, "furytest_12-1", uint64(helpers.DefaultGenTxGas*10), gasAmt, msgs,
+					suite.testAddr, suite.testPrivKey, "hightest_7102-1", uint64(helpers.DefaultGenTxGas*10), gasAmt, msgs,
 				)
 			},
 		},

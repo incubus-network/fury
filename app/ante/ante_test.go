@@ -59,7 +59,7 @@ func TestAppAnteHandler_AuthorizedMempool(t *testing.T) {
 		),
 	}
 
-	chainID := "furytest_1-1"
+	chainID := "hightest_710-1"
 	tApp = tApp.InitializeFromGenesisStatesWithTimeAndChainID(
 		time.Date(1998, 1, 1, 0, 0, 0, 0, time.UTC),
 		chainID,
@@ -209,7 +209,7 @@ func TestAppAnteHandler_RejectMsgsInAuthz(t *testing.T) {
 		return msg
 	}
 
-	chainID := "furytest_1-1"
+	chainID := "hightest_710-1"
 	encodingConfig := app.MakeEncodingConfig()
 
 	testcases := []struct {

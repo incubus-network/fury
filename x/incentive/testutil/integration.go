@@ -38,7 +38,7 @@ import (
 	swaptypes "github.com/incubus-network/fury/x/swap/types"
 )
 
-var testChainID = "furytest_1-1"
+var testChainID = "hightest_710-1"
 
 type IntegrationTester struct {
 	suite.Suite

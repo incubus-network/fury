@@ -59,7 +59,7 @@ import (
 
 var (
 	emptyTime            time.Time
-	testChainID                = "furytest_1-1"
+	testChainID                = "hightest_710-1"
 	defaultInitialHeight int64 = 1
 )
 

@@ -63323,6 +63323,43 @@ definitions:
     title: >-
       HardLiquidityProviderClaim stores the hard liquidity provider rewards that
       can be claimed by owner
+  fury.incentive.v1beta1.MUSDMintingClaim:
+    type: object
+    properties:
+      base_claim:
+        type: object
+        properties:
+          owner:
+            type: string
+            format: byte
+          reward:
+            type: object
+            properties:
+              denom:
+                type: string
+              amount:
+                type: string
+            description: >-
+              Coin defines a token with a denomination and an amount.
+
+
+              NOTE: The amount field is an Int which implements the custom
+              method
+
+              signatures required by gogoproto.
+        title: BaseClaim is a claim with a single reward coin types
+      reward_indexes:
+        type: array
+        items:
+          type: object
+          properties:
+            collateral_type:
+              type: string
+            reward_factor:
+              type: string
+              format: byte
+          title: RewardIndex stores reward accumulation information
+    title: MUSDMintingClaim is for MUSD minting rewards
   fury.incentive.v1beta1.MultiRewardIndex:
     type: object
     properties:
@@ -64549,43 +64586,6 @@ definitions:
             MultiRewardIndex stores reward accumulation information on multiple
             reward types
     title: SwapClaim stores the swap rewards that can be claimed by owner
-  fury.incentive.v1beta1.MUSDMintingClaim:
-    type: object
-    properties:
-      base_claim:
-        type: object
-        properties:
-          owner:
-            type: string
-            format: byte
-          reward:
-            type: object
-            properties:
-              denom:
-                type: string
-              amount:
-                type: string
-            description: >-
-              Coin defines a token with a denomination and an amount.
-
-
-              NOTE: The amount field is an Int which implements the custom
-              method
-
-              signatures required by gogoproto.
-        title: BaseClaim is a claim with a single reward coin types
-      reward_indexes:
-        type: array
-        items:
-          type: object
-          properties:
-            collateral_type:
-              type: string
-            reward_factor:
-              type: string
-              format: byte
-          title: RewardIndex stores reward accumulation information
-    title: MUSDMintingClaim is for MUSD minting rewards
   fury.issuance.v1beta1.Asset:
     type: object
     properties:
