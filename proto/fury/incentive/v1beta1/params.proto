@@ -73,8 +73,8 @@ message MultipliersPerDenom {
 
 // Params
 message Params {
-  repeated RewardPeriod usdx_minting_reward_periods = 1 [
-    (gogoproto.customname) = "USDXMintingRewardPeriods",
+  repeated RewardPeriod musd_minting_reward_periods = 1 [
+    (gogoproto.customname) = "MUSDMintingRewardPeriods",
     (gogoproto.castrepeated) = "RewardPeriods",
     (gogoproto.nullable) = false
   ];

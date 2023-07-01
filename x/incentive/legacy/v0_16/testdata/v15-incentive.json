@@ -1,6 +1,6 @@
 {
   "params": {
-    "usdx_minting_reward_periods": [
+    "musd_minting_reward_periods": [
       {
         "active": true,
         "rewards_per_second": {
@@ -95,7 +95,7 @@
     "swap_reward_periods": [
       {
         "active": true,
-        "collateral_type": "ufury:usdx",
+        "collateral_type": "ufury:musd",
         "start": "2021-07-14T00:00:00Z",
         "end": "2024-01-01T00:00:00Z",
         "rewards_per_second": [
@@ -111,7 +111,7 @@
       },
       {
         "active": true,
-        "collateral_type": "swp:usdx",
+        "collateral_type": "swp:musd",
         "start": "2021-07-14T00:00:00Z",
         "end": "2024-01-01T00:00:00Z",
         "rewards_per_second": [
@@ -243,7 +243,7 @@
     ],
     "multi_reward_indexes": [
       {
-        "collateral_type": "btcb:usdx",
+        "collateral_type": "btcb:musd",
         "reward_indexes": [
           {
             "collateral_type": "swp",
@@ -253,7 +253,7 @@
       }
     ]
   },
-  "usdx_reward_state": {
+  "musd_reward_state": {
     "accumulation_times": [
       {
         "collateral_type": "bnb-a",
@@ -352,7 +352,7 @@
       "supply_reward_indexes": []
     }
   ],
-  "usdx_minting_claims": [
+  "musd_minting_claims": [
     {
       "base_claim": {
         "owner": "fury1qptt5vu26cmxpmv0hf2tnnmf293x266pjcsjar",
@@ -386,7 +386,7 @@
       },
       "reward_indexes": [
         {
-          "collateral_type": "busd:usdx",
+          "collateral_type": "busd:musd",
           "reward_indexes": [
             {
               "collateral_type": "swp",

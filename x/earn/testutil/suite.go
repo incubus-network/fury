@@ -58,14 +58,14 @@ func (suite *Suite) SetupTest() {
 	pricefeedGS := pricefeedtypes.GenesisState{
 		Params: pricefeedtypes.Params{
 			Markets: []pricefeedtypes.Market{
-				{MarketID: "usdx:usd", BaseAsset: "usdx", QuoteAsset: "usd", Oracles: []sdk.AccAddress{}, Active: true},
+				{MarketID: "musd:usd", BaseAsset: "musd", QuoteAsset: "usd", Oracles: []sdk.AccAddress{}, Active: true},
 				{MarketID: "fury:usd", BaseAsset: "fury", QuoteAsset: "usd", Oracles: []sdk.AccAddress{}, Active: true},
 				{MarketID: "bnb:usd", BaseAsset: "bnb", QuoteAsset: "usd", Oracles: []sdk.AccAddress{}, Active: true},
 			},
 		},
 		PostedPrices: []pricefeedtypes.PostedPrice{
 			{
-				MarketID:      "usdx:usd",
+				MarketID:      "musd:usd",
 				OracleAddress: sdk.AccAddress{},
 				Price:         sdk.MustNewDecFromStr("1.00"),
 				Expiry:        time.Now().Add(100 * time.Hour),
@@ -88,13 +88,13 @@ func (suite *Suite) SetupTest() {
 	hardGS := hardtypes.NewGenesisState(hardtypes.NewParams(
 		hardtypes.MoneyMarkets{
 			hardtypes.NewMoneyMarket(
-				"usdx",
+				"musd",
 				hardtypes.NewBorrowLimit(
 					true,
 					sdk.MustNewDecFromStr("20000000"),
 					sdk.MustNewDecFromStr("1"),
 				),
-				"usdx:usd",
+				"musd:usd",
 				sdkmath.NewInt(1000000),
 				hardtypes.NewInterestRateModel(
 					sdk.MustNewDecFromStr("0.05"),
@@ -157,7 +157,7 @@ func (suite *Suite) SetupTest() {
 			[]string{
 				"ufury",
 				"busd",
-				"usdx",
+				"musd",
 				TestBfuryDenoms[0],
 				TestBfuryDenoms[1],
 				TestBfuryDenoms[2],

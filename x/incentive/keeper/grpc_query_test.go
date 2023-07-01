@@ -74,7 +74,7 @@ func (suite *grpcQueryTestSuite) SetupTest() {
 			types.MultiRewardPeriods{types.NewMultiRewardPeriod(true, "bnb", suite.genesisTime.Add(-1*oneYear), suite.genesisTime.Add(oneYear), cs(c("hard", 122354)))},
 			types.MultiRewardPeriods{types.NewMultiRewardPeriod(true, "bnb", suite.genesisTime.Add(-1*oneYear), suite.genesisTime.Add(oneYear), cs(c("hard", 122354)))},
 			types.MultiRewardPeriods{types.NewMultiRewardPeriod(true, "ufury", suite.genesisTime.Add(-1*oneYear), suite.genesisTime.Add(oneYear), cs(c("hard", 122354)))},
-			types.MultiRewardPeriods{types.NewMultiRewardPeriod(true, "btcb/usdx", suite.genesisTime.Add(-1*oneYear), suite.genesisTime.Add(oneYear), cs(c("swp", 122354)))},
+			types.MultiRewardPeriods{types.NewMultiRewardPeriod(true, "btcb/musd", suite.genesisTime.Add(-1*oneYear), suite.genesisTime.Add(oneYear), cs(c("swp", 122354)))},
 			types.MultiRewardPeriods{types.NewMultiRewardPeriod(true, "ufury", suite.genesisTime.Add(-1*oneYear), suite.genesisTime.Add(oneYear), cs(c("hard", 122354)))},
 			types.MultiRewardPeriods{types.NewMultiRewardPeriod(true, "ufury", suite.genesisTime.Add(-1*oneYear), suite.genesisTime.Add(oneYear), cs(c("hard", 122354)))},
 			types.MultipliersPerDenoms{
@@ -135,10 +135,10 @@ func (suite *grpcQueryTestSuite) SetupTest() {
 		),
 		types.NewGenesisRewardState(
 			types.AccumulationTimes{
-				types.NewAccumulationTime("bctb/usdx", suite.genesisTime.Add(-4*time.Hour)),
+				types.NewAccumulationTime("bctb/musd", suite.genesisTime.Add(-4*time.Hour)),
 			},
 			types.MultiRewardIndexes{
-				types.NewMultiRewardIndex("btcb/usdx", types.RewardIndexes{{CollateralType: "swap", RewardFactor: d("0.001")}}),
+				types.NewMultiRewardIndex("btcb/musd", types.RewardIndexes{{CollateralType: "swap", RewardFactor: d("0.001")}}),
 			},
 		),
 		types.NewGenesisRewardState(
@@ -151,19 +151,19 @@ func (suite *grpcQueryTestSuite) SetupTest() {
 		),
 		types.NewGenesisRewardState(
 			types.AccumulationTimes{
-				types.NewAccumulationTime("usdx", suite.genesisTime.Add(-3*time.Hour)),
+				types.NewAccumulationTime("musd", suite.genesisTime.Add(-3*time.Hour)),
 			},
 			types.MultiRewardIndexes{
-				types.NewMultiRewardIndex("usdx", types.RewardIndexes{{CollateralType: "usdx", RewardFactor: d("0.2")}}),
+				types.NewMultiRewardIndex("musd", types.RewardIndexes{{CollateralType: "musd", RewardFactor: d("0.2")}}),
 			},
 		),
-		types.USDXMintingClaims{
-			types.NewUSDXMintingClaim(
+		types.MUSDMintingClaims{
+			types.NewMUSDMintingClaim(
 				suite.addrs[0],
 				c("ufury", 1e9),
 				types.RewardIndexes{{CollateralType: "bnb-a", RewardFactor: d("0.3")}},
 			),
-			types.NewUSDXMintingClaim(
+			types.NewMUSDMintingClaim(
 				suite.addrs[1],
 				c("ufury", 1),
 				types.RewardIndexes{{CollateralType: "bnb-a", RewardFactor: d("0.001")}},
@@ -194,7 +194,7 @@ func (suite *grpcQueryTestSuite) SetupTest() {
 			types.NewSwapClaim(
 				suite.addrs[3],
 				nil,
-				types.MultiRewardIndexes{{CollateralType: "btcb/usdx", RewardIndexes: types.RewardIndexes{{CollateralType: "swap", RewardFactor: d("0.0")}}}},
+				types.MultiRewardIndexes{{CollateralType: "btcb/musd", RewardIndexes: types.RewardIndexes{{CollateralType: "swap", RewardFactor: d("0.0")}}}},
 			),
 		},
 		types.SavingsClaims{
@@ -208,7 +208,7 @@ func (suite *grpcQueryTestSuite) SetupTest() {
 			types.NewEarnClaim(
 				suite.addrs[3],
 				nil,
-				types.MultiRewardIndexes{{CollateralType: "usdx", RewardIndexes: types.RewardIndexes{{CollateralType: "usdx", RewardFactor: d("0.0")}}}},
+				types.MultiRewardIndexes{{CollateralType: "musd", RewardIndexes: types.RewardIndexes{{CollateralType: "musd", RewardFactor: d("0.0")}}}},
 			),
 		},
 	)
@@ -249,7 +249,7 @@ func (suite *grpcQueryTestSuite) TestGrpcQueryRewards() {
 	})
 	suite.Require().NoError(err)
 
-	suite.Equal(suite.genesisState.USDXMintingClaims, res.USDXMintingClaims)
+	suite.Equal(suite.genesisState.MUSDMintingClaims, res.MUSDMintingClaims)
 	suite.Equal(suite.genesisState.HardLiquidityProviderClaims, res.HardLiquidityProviderClaims)
 	suite.Equal(suite.genesisState.DelegatorClaims, res.DelegatorClaims)
 	suite.Equal(suite.genesisState.SwapClaims, res.SwapClaims)
@@ -263,10 +263,10 @@ func (suite *grpcQueryTestSuite) TestGrpcQueryRewards_Owner() {
 	})
 	suite.Require().NoError(err)
 
-	suite.Len(res.USDXMintingClaims, 1)
+	suite.Len(res.MUSDMintingClaims, 1)
 	suite.Len(res.HardLiquidityProviderClaims, 1)
 
-	suite.Equal(suite.genesisState.USDXMintingClaims[0], res.USDXMintingClaims[0])
+	suite.Equal(suite.genesisState.MUSDMintingClaims[0], res.MUSDMintingClaims[0])
 	suite.Equal(suite.genesisState.HardLiquidityProviderClaims[0], res.HardLiquidityProviderClaims[0])
 
 	// No other claims - owner has none
@@ -286,7 +286,7 @@ func (suite *grpcQueryTestSuite) TestGrpcQueryRewards_RewardType() {
 	suite.Equal(suite.genesisState.HardLiquidityProviderClaims, res.HardLiquidityProviderClaims)
 
 	// No other reward types when specifying rewardType
-	suite.Empty(res.USDXMintingClaims)
+	suite.Empty(res.MUSDMintingClaims)
 	suite.Empty(res.DelegatorClaims)
 	suite.Empty(res.SwapClaims)
 	suite.Empty(res.SavingsClaims)
@@ -303,7 +303,7 @@ func (suite *grpcQueryTestSuite) TestGrpcQueryRewards_RewardType_and_Owner() {
 	suite.Len(res.HardLiquidityProviderClaims, 1)
 	suite.Equal(suite.genesisState.HardLiquidityProviderClaims[0], res.HardLiquidityProviderClaims[0])
 
-	suite.Empty(res.USDXMintingClaims)
+	suite.Empty(res.MUSDMintingClaims)
 	suite.Empty(res.DelegatorClaims)
 	suite.Empty(res.SwapClaims)
 	suite.Empty(res.SavingsClaims)
@@ -314,7 +314,7 @@ func (suite *grpcQueryTestSuite) TestGrpcQueryRewardFactors() {
 	res, err := suite.queryClient.RewardFactors(sdk.WrapSDKContext(suite.ctx), &types.QueryRewardFactorsRequest{})
 	suite.Require().NoError(err)
 
-	suite.NotEmpty(res.UsdxMintingRewardFactors)
+	suite.NotEmpty(res.MusdMintingRewardFactors)
 	suite.NotEmpty(res.HardSupplyRewardFactors)
 	suite.NotEmpty(res.HardBorrowRewardFactors)
 	suite.NotEmpty(res.DelegatorRewardFactors)

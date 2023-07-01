@@ -44,7 +44,7 @@ func TestGrpcQueryTestSuite(t *testing.T) {
 }
 
 func (suite *grpcQueryTestSuite) TestQueryParams() {
-	vaultDenom := "usdx"
+	vaultDenom := "musd"
 
 	res, err := suite.queryClient.Params(context.Background(), types.NewQueryParamsRequest())
 	suite.Require().NoError(err)
@@ -67,15 +67,15 @@ func (suite *grpcQueryTestSuite) TestQueryParams() {
 
 func (suite *grpcQueryTestSuite) TestVaults_ZeroSupply() {
 	// Add vaults
-	suite.CreateVault("usdx", types.StrategyTypes{types.STRATEGY_TYPE_HARD}, false, nil)
+	suite.CreateVault("musd", types.StrategyTypes{types.STRATEGY_TYPE_HARD}, false, nil)
 	suite.CreateVault("busd", types.StrategyTypes{types.STRATEGY_TYPE_HARD}, false, nil)
 
 	suite.Run("single", func() {
-		res, err := suite.queryClient.Vault(context.Background(), types.NewQueryVaultRequest("usdx"))
+		res, err := suite.queryClient.Vault(context.Background(), types.NewQueryVaultRequest("musd"))
 		suite.Require().NoError(err)
 		suite.Require().Equal(
 			types.VaultResponse{
-				Denom:             "usdx",
+				Denom:             "musd",
 				Strategies:        []types.StrategyType{types.STRATEGY_TYPE_HARD},
 				IsPrivateVault:    false,
 				AllowedDepositors: nil,
@@ -91,7 +91,7 @@ func (suite *grpcQueryTestSuite) TestVaults_ZeroSupply() {
 		suite.Require().NoError(err)
 		suite.Require().ElementsMatch([]types.VaultResponse{
 			{
-				Denom:             "usdx",
+				Denom:             "musd",
 				Strategies:        []types.StrategyType{types.STRATEGY_TYPE_HARD},
 				IsPrivateVault:    false,
 				AllowedDepositors: nil,
@@ -113,7 +113,7 @@ func (suite *grpcQueryTestSuite) TestVaults_ZeroSupply() {
 }
 
 func (suite *grpcQueryTestSuite) TestVaults_WithSupply() {
-	vaultDenom := "usdx"
+	vaultDenom := "musd"
 	vault2Denom := testutil.TestBfuryDenoms[0]
 
 	depositAmount := sdk.NewInt64Coin(vaultDenom, 100)
@@ -160,7 +160,7 @@ func (suite *grpcQueryTestSuite) TestVaults_WithSupply() {
 }
 
 func (suite *grpcQueryTestSuite) TestVaults_MixedSupply() {
-	vaultDenom := "usdx"
+	vaultDenom := "musd"
 	vault2Denom := "busd"
 	vault3Denom := testutil.TestBfuryDenoms[0]
 
@@ -214,7 +214,7 @@ func (suite *grpcQueryTestSuite) TestVaults_MixedSupply() {
 }
 
 func (suite *grpcQueryTestSuite) TestVault_NotFound() {
-	_, err := suite.queryClient.Vault(context.Background(), types.NewQueryVaultRequest("usdx"))
+	_, err := suite.queryClient.Vault(context.Background(), types.NewQueryVaultRequest("musd"))
 	suite.Require().Error(err)
 	suite.Require().ErrorIs(err, status.Errorf(codes.NotFound, "vault not found with specified denom"))
 }
@@ -226,7 +226,7 @@ func (suite *grpcQueryTestSuite) TestDeposits() {
 	valAddr1 := sdk.ValAddress(valAccAddr1)
 	valAddr2 := sdk.ValAddress(valAccAddr2)
 
-	vault1Denom := "usdx"
+	vault1Denom := "musd"
 	vault2Denom := "busd"
 	vault3Denom := fmt.Sprintf("bfury-%s", valAddr1.String())
 	vault4Denom := fmt.Sprintf("bfury-%s", valAddr2.String())
@@ -273,8 +273,8 @@ func (suite *grpcQueryTestSuite) TestDeposits() {
 	acc2 := delegator
 
 	// Deposit into each vault from each account - 4 total deposits
-	// Acc 1: usdx + busd
-	// Acc 2: usdx + bfury-1 + bfury-2
+	// Acc 1: musd + busd
+	// Acc 2: musd + bfury-1 + bfury-2
 	err := suite.Keeper.Deposit(suite.Ctx, acc1, deposit1Amount, types.STRATEGY_TYPE_HARD)
 	suite.Require().NoError(err)
 	err = suite.Keeper.Deposit(suite.Ctx, acc1, deposit2Amount, types.STRATEGY_TYPE_HARD)
@@ -428,7 +428,7 @@ func (suite *grpcQueryTestSuite) TestDeposits() {
 }
 
 func (suite *grpcQueryTestSuite) TestDeposits_NoDeposits() {
-	vault1Denom := "usdx"
+	vault1Denom := "musd"
 	vault2Denom := "busd"
 
 	// Add vaults
@@ -476,7 +476,7 @@ func (suite *grpcQueryTestSuite) TestDeposits_NoDeposits() {
 func (suite *grpcQueryTestSuite) TestDeposits_NoDepositor() {
 	_, err := suite.queryClient.Deposits(
 		context.Background(),
-		types.NewQueryDepositsRequest("", "usdx", false, nil),
+		types.NewQueryDepositsRequest("", "musd", false, nil),
 	)
 	suite.Require().Error(err)
 	suite.Require().ErrorIs(err, status.Error(codes.InvalidArgument, "depositor is required"))
@@ -485,7 +485,7 @@ func (suite *grpcQueryTestSuite) TestDeposits_NoDepositor() {
 func (suite *grpcQueryTestSuite) TestDeposits_InvalidAddress() {
 	_, err := suite.queryClient.Deposits(
 		context.Background(),
-		types.NewQueryDepositsRequest("asdf", "usdx", false, nil),
+		types.NewQueryDepositsRequest("asdf", "musd", false, nil),
 	)
 	suite.Require().Error(err)
 	suite.Require().ErrorIs(err, status.Error(codes.InvalidArgument, "Invalid address"))
@@ -713,7 +713,7 @@ func (suite *grpcQueryTestSuite) TestTotalSupply() {
 		{
 			name: "no savings vaults mean no supply",
 			setup: func() {
-				suite.CreateVault("usdx", types.StrategyTypes{types.STRATEGY_TYPE_HARD}, false, nil)
+				suite.CreateVault("musd", types.StrategyTypes{types.STRATEGY_TYPE_HARD}, false, nil)
 				suite.CreateVault("busd", types.StrategyTypes{types.STRATEGY_TYPE_HARD}, false, nil)
 			},
 			expectedSupply: nil,
@@ -721,7 +721,7 @@ func (suite *grpcQueryTestSuite) TestTotalSupply() {
 		{
 			name: "empty savings vaults mean no supply",
 			setup: func() {
-				suite.CreateVault("usdx", types.StrategyTypes{types.STRATEGY_TYPE_SAVINGS}, false, nil)
+				suite.CreateVault("musd", types.StrategyTypes{types.STRATEGY_TYPE_SAVINGS}, false, nil)
 				suite.CreateVault("busd", types.StrategyTypes{types.STRATEGY_TYPE_SAVINGS}, false, nil)
 			},
 			expectedSupply: nil,
@@ -729,7 +729,7 @@ func (suite *grpcQueryTestSuite) TestTotalSupply() {
 		{
 			name: "calculates supply of savings vaults",
 			setup: func() {
-				vault1Denom := "usdx"
+				vault1Denom := "musd"
 				vault2Denom := "busd"
 				suite.CreateVault(vault1Denom, types.StrategyTypes{types.STRATEGY_TYPE_SAVINGS}, false, nil)
 				suite.CreateVault(vault2Denom, types.StrategyTypes{types.STRATEGY_TYPE_SAVINGS}, false, nil)
@@ -748,7 +748,7 @@ func (suite *grpcQueryTestSuite) TestTotalSupply() {
 				deposit(acc2.GetAddress(), vault2Denom, 2e5)
 			},
 			expectedSupply: sdk.NewCoins(
-				sdk.NewInt64Coin("usdx", 3e5),
+				sdk.NewInt64Coin("musd", 3e5),
 				sdk.NewInt64Coin("busd", 3e5),
 			),
 		},

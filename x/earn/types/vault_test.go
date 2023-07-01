@@ -26,7 +26,7 @@ func TestVaultRecordValidate(t *testing.T) {
 			name: "valid vault records",
 			vaultRecords: types.VaultRecords{
 				{
-					TotalShares: types.NewVaultShare("usdx", sdk.NewDec(0)),
+					TotalShares: types.NewVaultShare("musd", sdk.NewDec(0)),
 				},
 				{
 					TotalShares: types.NewVaultShare("ufury", sdk.NewDec(5)),
@@ -40,15 +40,15 @@ func TestVaultRecordValidate(t *testing.T) {
 			name: "invalid - duplicate denom",
 			vaultRecords: types.VaultRecords{
 				{
-					TotalShares: types.NewVaultShare("usdx", sdk.NewDec(0)),
+					TotalShares: types.NewVaultShare("musd", sdk.NewDec(0)),
 				},
 				{
-					TotalShares: types.NewVaultShare("usdx", sdk.NewDec(5)),
+					TotalShares: types.NewVaultShare("musd", sdk.NewDec(5)),
 				},
 			},
 			errArgs: errArgs{
 				expectPass: false,
-				contains:   "duplicate vault denom usdx",
+				contains:   "duplicate vault denom musd",
 			},
 		},
 		{
@@ -67,7 +67,7 @@ func TestVaultRecordValidate(t *testing.T) {
 			name: "invalid - negative",
 			vaultRecords: types.VaultRecords{
 				{
-					TotalShares: types.VaultShare{"usdx", sdk.NewDec(-5)},
+					TotalShares: types.VaultShare{"musd", sdk.NewDec(-5)},
 				},
 			},
 			errArgs: errArgs{
@@ -110,13 +110,13 @@ func TestVaultShareRecordsValidate(t *testing.T) {
 				{
 					Depositor: addrs[0],
 					Shares: types.NewVaultShares(
-						types.NewVaultShare("usdx", sdk.NewDec(0)),
+						types.NewVaultShare("musd", sdk.NewDec(0)),
 					),
 				},
 				{
 					Depositor: addrs[1],
 					Shares: types.NewVaultShares(
-						types.NewVaultShare("usdx", sdk.NewDec(0)),
+						types.NewVaultShare("musd", sdk.NewDec(0)),
 						types.NewVaultShare("ufury", sdk.NewDec(5)),
 					),
 				},
@@ -131,13 +131,13 @@ func TestVaultShareRecordsValidate(t *testing.T) {
 				{
 					Depositor: addrs[0],
 					Shares: types.NewVaultShares(
-						types.NewVaultShare("usdx", sdk.NewDec(0)),
+						types.NewVaultShare("musd", sdk.NewDec(0)),
 					),
 				},
 				{
 					Depositor: addrs[0],
 					Shares: types.NewVaultShares(
-						types.NewVaultShare("usdx", sdk.NewDec(0)),
+						types.NewVaultShare("musd", sdk.NewDec(0)),
 						types.NewVaultShare("ufury", sdk.NewDec(5)),
 					),
 				},
@@ -153,7 +153,7 @@ func TestVaultShareRecordsValidate(t *testing.T) {
 				{
 					Depositor: sdk.AccAddress{},
 					Shares: types.NewVaultShares(
-						types.NewVaultShare("usdx", sdk.NewDec(0)),
+						types.NewVaultShare("musd", sdk.NewDec(0)),
 					),
 				},
 			},
@@ -169,13 +169,13 @@ func TestVaultShareRecordsValidate(t *testing.T) {
 					Depositor: addrs[0],
 					// Direct slice, not NewVaultShares() which panics
 					Shares: types.VaultShares{
-						types.VaultShare{"usdx", sdk.NewDec(-5)},
+						types.VaultShare{"musd", sdk.NewDec(-5)},
 					},
 				},
 			},
 			errArgs: errArgs{
 				expectPass: false,
-				contains:   "invalid vault share record shares: share -5.000000000000000000usdx amount is not positive",
+				contains:   "invalid vault share record shares: share -5.000000000000000000musd amount is not positive",
 			},
 		},
 	}
@@ -209,7 +209,7 @@ func TestAllowedVaultsValidate(t *testing.T) {
 			name: "valid vault share records",
 			vaultRecords: types.AllowedVaults{
 				{
-					Denom:             "usdx",
+					Denom:             "musd",
 					Strategies:        []types.StrategyType{types.STRATEGY_TYPE_HARD},
 					IsPrivateVault:    false,
 					AllowedDepositors: []sdk.AccAddress{},
@@ -229,13 +229,13 @@ func TestAllowedVaultsValidate(t *testing.T) {
 			name: "invalid - duplicate denom",
 			vaultRecords: types.AllowedVaults{
 				{
-					Denom:             "usdx",
+					Denom:             "musd",
 					Strategies:        []types.StrategyType{types.STRATEGY_TYPE_HARD},
 					IsPrivateVault:    false,
 					AllowedDepositors: []sdk.AccAddress{},
 				},
 				{
-					Denom:             "usdx",
+					Denom:             "musd",
 					Strategies:        []types.StrategyType{types.STRATEGY_TYPE_HARD},
 					IsPrivateVault:    false,
 					AllowedDepositors: []sdk.AccAddress{},
@@ -243,7 +243,7 @@ func TestAllowedVaultsValidate(t *testing.T) {
 			},
 			errArgs: errArgs{
 				expectPass: false,
-				contains:   "duplicate vault denom usdx",
+				contains:   "duplicate vault denom musd",
 			},
 		},
 		{
@@ -265,7 +265,7 @@ func TestAllowedVaultsValidate(t *testing.T) {
 			name: "invalid - invalid strategy",
 			vaultRecords: types.AllowedVaults{
 				{
-					Denom:             "usdx",
+					Denom:             "musd",
 					Strategies:        []types.StrategyType{types.STRATEGY_TYPE_UNSPECIFIED},
 					IsPrivateVault:    false,
 					AllowedDepositors: []sdk.AccAddress{},
@@ -280,7 +280,7 @@ func TestAllowedVaultsValidate(t *testing.T) {
 			name: "invalid - private with no allowed depositors",
 			vaultRecords: types.AllowedVaults{
 				{
-					Denom:             "usdx",
+					Denom:             "musd",
 					Strategies:        []types.StrategyType{types.STRATEGY_TYPE_HARD},
 					IsPrivateVault:    true,
 					AllowedDepositors: []sdk.AccAddress{},
@@ -295,7 +295,7 @@ func TestAllowedVaultsValidate(t *testing.T) {
 			name: "invalid - public with allowed depositors",
 			vaultRecords: types.AllowedVaults{
 				{
-					Denom:          "usdx",
+					Denom:          "musd",
 					Strategies:     []types.StrategyType{types.STRATEGY_TYPE_HARD},
 					IsPrivateVault: false,
 					AllowedDepositors: []sdk.AccAddress{
@@ -326,7 +326,7 @@ func TestAllowedVaultsValidate(t *testing.T) {
 
 func TestIsStrategyAllowed(t *testing.T) {
 	vault := types.NewAllowedVault(
-		"usdx",
+		"musd",
 		[]types.StrategyType{types.STRATEGY_TYPE_HARD},
 		true,
 		[]sdk.AccAddress{},
@@ -344,7 +344,7 @@ func TestIsAccountAllowed_Private(t *testing.T) {
 	acc3 := sdk.AccAddress("acc3")
 
 	vault := types.NewAllowedVault(
-		"usdx",
+		"musd",
 		[]types.StrategyType{types.STRATEGY_TYPE_HARD},
 		true,
 		[]sdk.AccAddress{acc1, acc2},
@@ -361,7 +361,7 @@ func TestIsAccountAllowed_Public(t *testing.T) {
 	acc3 := sdk.AccAddress("acc3")
 
 	vault := types.NewAllowedVault(
-		"usdx",
+		"musd",
 		[]types.StrategyType{types.STRATEGY_TYPE_HARD},
 		false,
 		[]sdk.AccAddress{},
@@ -376,7 +376,7 @@ func TestNewVaultShareRecord(t *testing.T) {
 	_, addrs := app.GeneratePrivKeyAddressPairs(1)
 
 	shares := types.NewVaultShares(
-		types.NewVaultShare("usdx", sdk.NewDec(0)),
+		types.NewVaultShare("musd", sdk.NewDec(0)),
 		types.NewVaultShare("ufury", sdk.NewDec(5)),
 	)
 

@@ -144,19 +144,19 @@ func (builder IncentiveGenesisBuilder) WithSimpleSwapRewardPeriod(poolID string,
 	return builder.WithInitializedSwapRewardPeriod(builder.simpleRewardPeriod(poolID, rewardsPerSecond))
 }
 
-// WithInitializedUSDXRewardPeriod sets the genesis time as the previous accumulation time for the specified period.
+// WithInitializedMUSDRewardPeriod sets the genesis time as the previous accumulation time for the specified period.
 // This can be helpful in tests. With no prev time set, the first block accrues no rewards as it just sets the prev time to the current.
-func (builder IncentiveGenesisBuilder) WithInitializedUSDXRewardPeriod(period types.RewardPeriod) IncentiveGenesisBuilder {
-	builder.Params.USDXMintingRewardPeriods = append(builder.Params.USDXMintingRewardPeriods, period)
+func (builder IncentiveGenesisBuilder) WithInitializedMUSDRewardPeriod(period types.RewardPeriod) IncentiveGenesisBuilder {
+	builder.Params.MUSDMintingRewardPeriods = append(builder.Params.MUSDMintingRewardPeriods, period)
 
 	accumulationTimeForPeriod := types.NewAccumulationTime(period.CollateralType, builder.genesisTime)
-	builder.USDXRewardState.AccumulationTimes = append(
-		builder.USDXRewardState.AccumulationTimes,
+	builder.MUSDRewardState.AccumulationTimes = append(
+		builder.MUSDRewardState.AccumulationTimes,
 		accumulationTimeForPeriod,
 	)
 
 	// TODO remove to better reflect real states
-	builder.USDXRewardState.MultiRewardIndexes = builder.USDXRewardState.MultiRewardIndexes.With(
+	builder.MUSDRewardState.MultiRewardIndexes = builder.MUSDRewardState.MultiRewardIndexes.With(
 		period.CollateralType,
 		newZeroRewardIndexesFromCoins(period.RewardsPerSecond),
 	)
@@ -164,8 +164,8 @@ func (builder IncentiveGenesisBuilder) WithInitializedUSDXRewardPeriod(period ty
 	return builder
 }
 
-func (builder IncentiveGenesisBuilder) WithSimpleUSDXRewardPeriod(ctype string, rewardsPerSecond sdk.Coin) IncentiveGenesisBuilder {
-	return builder.WithInitializedUSDXRewardPeriod(types.NewRewardPeriod(
+func (builder IncentiveGenesisBuilder) WithSimpleMUSDRewardPeriod(ctype string, rewardsPerSecond sdk.Coin) IncentiveGenesisBuilder {
+	return builder.WithInitializedMUSDRewardPeriod(types.NewRewardPeriod(
 		true,
 		ctype,
 		builder.genesisTime,

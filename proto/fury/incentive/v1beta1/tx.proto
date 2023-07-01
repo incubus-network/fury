@@ -7,8 +7,8 @@ option go_package = "github.com/incubus-network/fury/x/incentive/types";
 
 // Msg defines the incentive Msg service.
 service Msg {
-  // ClaimUSDXMintingReward is a message type used to claim USDX minting rewards
-  rpc ClaimUSDXMintingReward(MsgClaimUSDXMintingReward) returns (MsgClaimUSDXMintingRewardResponse);
+  // ClaimMUSDMintingReward is a message type used to claim MUSD minting rewards
+  rpc ClaimMUSDMintingReward(MsgClaimMUSDMintingReward) returns (MsgClaimMUSDMintingRewardResponse);
 
   // ClaimHardReward is a message type used to claim Hard liquidity provider rewards
   rpc ClaimHardReward(MsgClaimHardReward) returns (MsgClaimHardRewardResponse);
@@ -36,8 +36,8 @@ message Selection {
   string multiplier_name = 2;
 }
 
-// MsgClaimUSDXMintingReward message type used to claim USDX minting rewards
-message MsgClaimUSDXMintingReward {
+// MsgClaimMUSDMintingReward message type used to claim MUSD minting rewards
+message MsgClaimMUSDMintingReward {
   option (gogoproto.equal) = false;
   option (gogoproto.goproto_getters) = false;
 
@@ -45,8 +45,8 @@ message MsgClaimUSDXMintingReward {
   string multiplier_name = 2;
 }
 
-// MsgClaimUSDXMintingRewardResponse defines the Msg/ClaimUSDXMintingReward response type.
-message MsgClaimUSDXMintingRewardResponse {}
+// MsgClaimMUSDMintingRewardResponse defines the Msg/ClaimMUSDMintingReward response type.
+message MsgClaimMUSDMintingRewardResponse {}
 
 // MsgClaimHardReward message type used to claim Hard liquidity provider rewards
 message MsgClaimHardReward {

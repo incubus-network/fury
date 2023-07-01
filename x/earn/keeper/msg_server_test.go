@@ -33,7 +33,7 @@ func TestMsgServerTestSuite(t *testing.T) {
 }
 
 func (suite *msgServerTestSuite) TestDeposit() {
-	vaultDenom := "usdx"
+	vaultDenom := "musd"
 	suite.CreateVault(vaultDenom, types.StrategyTypes{types.STRATEGY_TYPE_HARD}, false, nil)
 
 	startBalance := sdk.NewInt64Coin(vaultDenom, 1000)
@@ -86,7 +86,7 @@ func (suite *msgServerTestSuite) TestDeposit() {
 }
 
 func (suite *msgServerTestSuite) TestWithdraw() {
-	vaultDenom := "usdx"
+	vaultDenom := "musd"
 	suite.CreateVault(vaultDenom, types.StrategyTypes{types.STRATEGY_TYPE_HARD}, false, nil)
 
 	startBalance := sdk.NewInt64Coin(vaultDenom, 1000)

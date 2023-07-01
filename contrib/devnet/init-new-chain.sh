@@ -27,7 +27,7 @@ rm -rf $DATA
 BINARY=fury
 
 # Create new data directory, overwriting any that alread existed
-chainID="furylocalnet_8888-1"
+chainID="highbury_710-1"
 $BINARY init validator --chain-id $chainID
 
 # hacky enable of rest api
@@ -41,7 +41,7 @@ sed -in-place='' '/iavl-cache-size/a\
 trace = true' $DATA/config/app.toml
 
 # Set client chain id
-sed -in-place='' 's/chain-id = ""/chain-id = "furylocalnet_8888-1"/g' $DATA/config/client.toml
+sed -in-place='' 's/chain-id = ""/chain-id = "highbury_710-1"/g' $DATA/config/client.toml
 
 # avoid having to use password for keys
 $BINARY config keyring-backend test
@@ -62,7 +62,7 @@ $BINARY add-genesis-account $evmFaucetKeyName 1000000000ufury
 
 userKeyName="user"
 printf "$userMnemonic\n" | $BINARY keys add $userKeyName --eth --recover
-$BINARY add-genesis-account $userKeyName 1000000000ufury,1000000000usdx
+$BINARY add-genesis-account $userKeyName 1000000000ufury,1000000000musd
 
 relayerKeyName="relayer"
 printf "$relayerMnemonic\n" | $BINARY keys add $relayerKeyName --eth --recover
@@ -95,7 +95,7 @@ jq '.app_state.evm.params.chain_config.cancun_block = null' $DATA/config/genesis
 # Add earn vault
 jq '.app_state.earn.params.allowed_vaults =  [
     {
-        denom: "usdx",
+        denom: "musd",
         strategies: ["STRATEGY_TYPE_HARD"],
     },
     {

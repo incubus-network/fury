@@ -34,7 +34,7 @@ func TestDepositTestSuite(t *testing.T) {
 }
 
 func (suite *depositTestSuite) TestDeposit_Balances() {
-	vaultDenom := "usdx"
+	vaultDenom := "musd"
 	startBalance := sdk.NewInt64Coin(vaultDenom, 1000)
 	depositAmount := sdk.NewInt64Coin(vaultDenom, 100)
 
@@ -57,7 +57,7 @@ func (suite *depositTestSuite) TestDeposit_Balances() {
 }
 
 func (suite *depositTestSuite) TestDeposit_Exceed() {
-	vaultDenom := "usdx"
+	vaultDenom := "musd"
 	startBalance := sdk.NewInt64Coin(vaultDenom, 1000)
 	depositAmount := sdk.NewInt64Coin(vaultDenom, 1001)
 
@@ -82,7 +82,7 @@ func (suite *depositTestSuite) TestDeposit_Exceed() {
 }
 
 func (suite *depositTestSuite) TestDeposit_Zero() {
-	vaultDenom := "usdx"
+	vaultDenom := "musd"
 	startBalance := sdk.NewInt64Coin(vaultDenom, 1000)
 	depositAmount := sdk.NewInt64Coin(vaultDenom, 0)
 
@@ -107,7 +107,7 @@ func (suite *depositTestSuite) TestDeposit_Zero() {
 }
 
 func (suite *depositTestSuite) TestDeposit_InvalidVault() {
-	vaultDenom := "usdx"
+	vaultDenom := "musd"
 	startBalance := sdk.NewInt64Coin(vaultDenom, 1000)
 	depositAmount := sdk.NewInt64Coin(vaultDenom, 1001)
 
@@ -132,7 +132,7 @@ func (suite *depositTestSuite) TestDeposit_InvalidVault() {
 }
 
 func (suite *depositTestSuite) TestDeposit_InvalidStrategy() {
-	vaultDenom := "usdx"
+	vaultDenom := "musd"
 	startBalance := sdk.NewInt64Coin(vaultDenom, 1000)
 	depositAmount := sdk.NewInt64Coin(vaultDenom, 1001)
 
@@ -146,7 +146,7 @@ func (suite *depositTestSuite) TestDeposit_InvalidStrategy() {
 }
 
 func (suite *depositTestSuite) TestDeposit_PrivateVault() {
-	vaultDenom := "usdx"
+	vaultDenom := "musd"
 	startBalance := sdk.NewInt64Coin(vaultDenom, 1000)
 	depositAmount := sdk.NewInt64Coin(vaultDenom, 100)
 

@@ -6,7 +6,7 @@ import (
 )
 
 var (
-	DefaultUSDXClaims         = USDXMintingClaims{}
+	DefaultMUSDClaims         = MUSDMintingClaims{}
 	DefaultHardClaims         = HardLiquidityProviderClaims{}
 	DefaultDelegatorClaims    = DelegatorClaims{}
 	DefaultSwapClaims         = SwapClaims{}
@@ -21,14 +21,14 @@ var (
 // NewGenesisState returns a new genesis state
 func NewGenesisState(
 	params Params,
-	usdxState, hardSupplyState, hardBorrowState, delegatorState, swapState, savingsState, earnState GenesisRewardState,
-	c USDXMintingClaims, hc HardLiquidityProviderClaims, dc DelegatorClaims, sc SwapClaims, savingsc SavingsClaims,
+	musdState, hardSupplyState, hardBorrowState, delegatorState, swapState, savingsState, earnState GenesisRewardState,
+	c MUSDMintingClaims, hc HardLiquidityProviderClaims, dc DelegatorClaims, sc SwapClaims, savingsc SavingsClaims,
 	earnc EarnClaims,
 ) GenesisState {
 	return GenesisState{
 		Params: params,
 
-		USDXRewardState:       usdxState,
+		MUSDRewardState:       musdState,
 		HardSupplyRewardState: hardSupplyState,
 		HardBorrowRewardState: hardBorrowState,
 		DelegatorRewardState:  delegatorState,
@@ -36,7 +36,7 @@ func NewGenesisState(
 		SavingsRewardState:    savingsState,
 		EarnRewardState:       earnState,
 
-		USDXMintingClaims:           c,
+		MUSDMintingClaims:           c,
 		HardLiquidityProviderClaims: hc,
 		DelegatorClaims:             dc,
 		SwapClaims:                  sc,
@@ -49,14 +49,14 @@ func NewGenesisState(
 func DefaultGenesisState() GenesisState {
 	return GenesisState{
 		Params:                      DefaultParams(),
-		USDXRewardState:             DefaultGenesisRewardState,
+		MUSDRewardState:             DefaultGenesisRewardState,
 		HardSupplyRewardState:       DefaultGenesisRewardState,
 		HardBorrowRewardState:       DefaultGenesisRewardState,
 		DelegatorRewardState:        DefaultGenesisRewardState,
 		SwapRewardState:             DefaultGenesisRewardState,
 		SavingsRewardState:          DefaultGenesisRewardState,
 		EarnRewardState:             DefaultGenesisRewardState,
-		USDXMintingClaims:           DefaultUSDXClaims,
+		MUSDMintingClaims:           DefaultMUSDClaims,
 		HardLiquidityProviderClaims: DefaultHardClaims,
 		DelegatorClaims:             DefaultDelegatorClaims,
 		SwapClaims:                  DefaultSwapClaims,
@@ -72,7 +72,7 @@ func (gs GenesisState) Validate() error {
 		return err
 	}
 
-	if err := gs.USDXRewardState.Validate(); err != nil {
+	if err := gs.MUSDRewardState.Validate(); err != nil {
 		return err
 	}
 	if err := gs.HardSupplyRewardState.Validate(); err != nil {
@@ -94,7 +94,7 @@ func (gs GenesisState) Validate() error {
 		return err
 	}
 
-	if err := gs.USDXMintingClaims.Validate(); err != nil {
+	if err := gs.MUSDMintingClaims.Validate(); err != nil {
 		return err
 	}
 	if err := gs.HardLiquidityProviderClaims.Validate(); err != nil {

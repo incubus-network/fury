@@ -39,8 +39,8 @@ message GenesisRewardState {
 message GenesisState {
   Params params = 1 [(gogoproto.nullable) = false];
 
-  GenesisRewardState usdx_reward_state = 2 [
-    (gogoproto.customname) = "USDXRewardState",
+  GenesisRewardState musd_reward_state = 2 [
+    (gogoproto.customname) = "MUSDRewardState",
     (gogoproto.nullable) = false
   ];
 
@@ -52,9 +52,9 @@ message GenesisState {
 
   GenesisRewardState swap_reward_state = 6 [(gogoproto.nullable) = false];
 
-  repeated USDXMintingClaim usdx_minting_claims = 7 [
-    (gogoproto.customname) = "USDXMintingClaims",
-    (gogoproto.castrepeated) = "USDXMintingClaims",
+  repeated MUSDMintingClaim musd_minting_claims = 7 [
+    (gogoproto.customname) = "MUSDMintingClaims",
+    (gogoproto.castrepeated) = "MUSDMintingClaims",
     (gogoproto.nullable) = false
   ];
 

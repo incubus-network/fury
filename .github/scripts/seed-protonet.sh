@@ -86,7 +86,7 @@ npx hardhat --network "${ERC20_DEPLOYER_NETWORK_NAME}" mint-erc20 "$AXL_USDC_CON
 # give dev-wallet enough delegation power to pass proposals by itself
 
 # issue fury to dev wallet for delegating to each validator
-fury tx issuance issue 6000000000ufury fury1vlpsrmdyuywvaqrv7rx6xga224sqfwz3fyfhwq \
+fury tx issuance issue 6000000000ufury fury1q0dkky0505r555etn6u2nz4h4kjcg5y8pk6g54 \
   --from dev-wallet --gas-prices 0.5ufury -y
 
 # parse space seperated list of validators

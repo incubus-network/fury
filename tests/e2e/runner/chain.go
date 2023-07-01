@@ -74,7 +74,7 @@ var (
 		GrpcUrl:   "http://localhost:9090",
 		EvmRpcUrl: "http://localhost:8545",
 
-		ChainId:      "furylocalnet_8888-1",
+		ChainId:      "highbury_710-1",
 		StakingDenom: "ufury",
 	}
 	kvtoolIbcChain = ChainDetails{

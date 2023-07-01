@@ -39,7 +39,7 @@ func (m *Selection) Reset()         { *m = Selection{} }
 func (m *Selection) String() string { return proto.CompactTextString(m) }
 func (*Selection) ProtoMessage()    {}
 func (*Selection) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b1cec058e3ff75d5, []int{0}
+	return fileDescriptor_e6e1c6edfdd8e91a, []int{0}
 }
 func (m *Selection) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -68,24 +68,24 @@ func (m *Selection) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Selection proto.InternalMessageInfo
 
-// MsgClaimUSDXMintingReward message type used to claim USDX minting rewards
-type MsgClaimUSDXMintingReward struct {
+// MsgClaimMUSDMintingReward message type used to claim MUSD minting rewards
+type MsgClaimMUSDMintingReward struct {
 	Sender         string `protobuf:"bytes,1,opt,name=sender,proto3" json:"sender,omitempty"`
 	MultiplierName string `protobuf:"bytes,2,opt,name=multiplier_name,json=multiplierName,proto3" json:"multiplier_name,omitempty"`
 }
 
-func (m *MsgClaimUSDXMintingReward) Reset()         { *m = MsgClaimUSDXMintingReward{} }
-func (m *MsgClaimUSDXMintingReward) String() string { return proto.CompactTextString(m) }
-func (*MsgClaimUSDXMintingReward) ProtoMessage()    {}
-func (*MsgClaimUSDXMintingReward) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b1cec058e3ff75d5, []int{1}
+func (m *MsgClaimMUSDMintingReward) Reset()         { *m = MsgClaimMUSDMintingReward{} }
+func (m *MsgClaimMUSDMintingReward) String() string { return proto.CompactTextString(m) }
+func (*MsgClaimMUSDMintingReward) ProtoMessage()    {}
+func (*MsgClaimMUSDMintingReward) Descriptor() ([]byte, []int) {
+	return fileDescriptor_e6e1c6edfdd8e91a, []int{1}
 }
-func (m *MsgClaimUSDXMintingReward) XXX_Unmarshal(b []byte) error {
+func (m *MsgClaimMUSDMintingReward) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *MsgClaimUSDXMintingReward) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *MsgClaimMUSDMintingReward) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_MsgClaimUSDXMintingReward.Marshal(b, m, deterministic)
+		return xxx_messageInfo_MsgClaimMUSDMintingReward.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -95,34 +95,34 @@ func (m *MsgClaimUSDXMintingReward) XXX_Marshal(b []byte, deterministic bool) ([
 		return b[:n], nil
 	}
 }
-func (m *MsgClaimUSDXMintingReward) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MsgClaimUSDXMintingReward.Merge(m, src)
+func (m *MsgClaimMUSDMintingReward) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgClaimMUSDMintingReward.Merge(m, src)
 }
-func (m *MsgClaimUSDXMintingReward) XXX_Size() int {
+func (m *MsgClaimMUSDMintingReward) XXX_Size() int {
 	return m.Size()
 }
-func (m *MsgClaimUSDXMintingReward) XXX_DiscardUnknown() {
-	xxx_messageInfo_MsgClaimUSDXMintingReward.DiscardUnknown(m)
+func (m *MsgClaimMUSDMintingReward) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgClaimMUSDMintingReward.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_MsgClaimUSDXMintingReward proto.InternalMessageInfo
+var xxx_messageInfo_MsgClaimMUSDMintingReward proto.InternalMessageInfo
 
-// MsgClaimUSDXMintingRewardResponse defines the Msg/ClaimUSDXMintingReward response type.
-type MsgClaimUSDXMintingRewardResponse struct {
+// MsgClaimMUSDMintingRewardResponse defines the Msg/ClaimMUSDMintingReward response type.
+type MsgClaimMUSDMintingRewardResponse struct {
 }
 
-func (m *MsgClaimUSDXMintingRewardResponse) Reset()         { *m = MsgClaimUSDXMintingRewardResponse{} }
-func (m *MsgClaimUSDXMintingRewardResponse) String() string { return proto.CompactTextString(m) }
-func (*MsgClaimUSDXMintingRewardResponse) ProtoMessage()    {}
-func (*MsgClaimUSDXMintingRewardResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b1cec058e3ff75d5, []int{2}
+func (m *MsgClaimMUSDMintingRewardResponse) Reset()         { *m = MsgClaimMUSDMintingRewardResponse{} }
+func (m *MsgClaimMUSDMintingRewardResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgClaimMUSDMintingRewardResponse) ProtoMessage()    {}
+func (*MsgClaimMUSDMintingRewardResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_e6e1c6edfdd8e91a, []int{2}
 }
-func (m *MsgClaimUSDXMintingRewardResponse) XXX_Unmarshal(b []byte) error {
+func (m *MsgClaimMUSDMintingRewardResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *MsgClaimUSDXMintingRewardResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *MsgClaimMUSDMintingRewardResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_MsgClaimUSDXMintingRewardResponse.Marshal(b, m, deterministic)
+		return xxx_messageInfo_MsgClaimMUSDMintingRewardResponse.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -132,17 +132,17 @@ func (m *MsgClaimUSDXMintingRewardResponse) XXX_Marshal(b []byte, deterministic 
 		return b[:n], nil
 	}
 }
-func (m *MsgClaimUSDXMintingRewardResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MsgClaimUSDXMintingRewardResponse.Merge(m, src)
+func (m *MsgClaimMUSDMintingRewardResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgClaimMUSDMintingRewardResponse.Merge(m, src)
 }
-func (m *MsgClaimUSDXMintingRewardResponse) XXX_Size() int {
+func (m *MsgClaimMUSDMintingRewardResponse) XXX_Size() int {
 	return m.Size()
 }
-func (m *MsgClaimUSDXMintingRewardResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_MsgClaimUSDXMintingRewardResponse.DiscardUnknown(m)
+func (m *MsgClaimMUSDMintingRewardResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgClaimMUSDMintingRewardResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_MsgClaimUSDXMintingRewardResponse proto.InternalMessageInfo
+var xxx_messageInfo_MsgClaimMUSDMintingRewardResponse proto.InternalMessageInfo
 
 // MsgClaimHardReward message type used to claim Hard liquidity provider rewards
 type MsgClaimHardReward struct {
@@ -154,7 +154,7 @@ func (m *MsgClaimHardReward) Reset()         { *m = MsgClaimHardReward{} }
 func (m *MsgClaimHardReward) String() string { return proto.CompactTextString(m) }
 func (*MsgClaimHardReward) ProtoMessage()    {}
 func (*MsgClaimHardReward) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b1cec058e3ff75d5, []int{3}
+	return fileDescriptor_e6e1c6edfdd8e91a, []int{3}
 }
 func (m *MsgClaimHardReward) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -191,7 +191,7 @@ func (m *MsgClaimHardRewardResponse) Reset()         { *m = MsgClaimHardRewardRe
 func (m *MsgClaimHardRewardResponse) String() string { return proto.CompactTextString(m) }
 func (*MsgClaimHardRewardResponse) ProtoMessage()    {}
 func (*MsgClaimHardRewardResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b1cec058e3ff75d5, []int{4}
+	return fileDescriptor_e6e1c6edfdd8e91a, []int{4}
 }
 func (m *MsgClaimHardRewardResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -230,7 +230,7 @@ func (m *MsgClaimDelegatorReward) Reset()         { *m = MsgClaimDelegatorReward
 func (m *MsgClaimDelegatorReward) String() string { return proto.CompactTextString(m) }
 func (*MsgClaimDelegatorReward) ProtoMessage()    {}
 func (*MsgClaimDelegatorReward) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b1cec058e3ff75d5, []int{5}
+	return fileDescriptor_e6e1c6edfdd8e91a, []int{5}
 }
 func (m *MsgClaimDelegatorReward) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -267,7 +267,7 @@ func (m *MsgClaimDelegatorRewardResponse) Reset()         { *m = MsgClaimDelegat
 func (m *MsgClaimDelegatorRewardResponse) String() string { return proto.CompactTextString(m) }
 func (*MsgClaimDelegatorRewardResponse) ProtoMessage()    {}
 func (*MsgClaimDelegatorRewardResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b1cec058e3ff75d5, []int{6}
+	return fileDescriptor_e6e1c6edfdd8e91a, []int{6}
 }
 func (m *MsgClaimDelegatorRewardResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -306,7 +306,7 @@ func (m *MsgClaimSwapReward) Reset()         { *m = MsgClaimSwapReward{} }
 func (m *MsgClaimSwapReward) String() string { return proto.CompactTextString(m) }
 func (*MsgClaimSwapReward) ProtoMessage()    {}
 func (*MsgClaimSwapReward) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b1cec058e3ff75d5, []int{7}
+	return fileDescriptor_e6e1c6edfdd8e91a, []int{7}
 }
 func (m *MsgClaimSwapReward) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -343,7 +343,7 @@ func (m *MsgClaimSwapRewardResponse) Reset()         { *m = MsgClaimSwapRewardRe
 func (m *MsgClaimSwapRewardResponse) String() string { return proto.CompactTextString(m) }
 func (*MsgClaimSwapRewardResponse) ProtoMessage()    {}
 func (*MsgClaimSwapRewardResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b1cec058e3ff75d5, []int{8}
+	return fileDescriptor_e6e1c6edfdd8e91a, []int{8}
 }
 func (m *MsgClaimSwapRewardResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -382,7 +382,7 @@ func (m *MsgClaimSavingsReward) Reset()         { *m = MsgClaimSavingsReward{} }
 func (m *MsgClaimSavingsReward) String() string { return proto.CompactTextString(m) }
 func (*MsgClaimSavingsReward) ProtoMessage()    {}
 func (*MsgClaimSavingsReward) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b1cec058e3ff75d5, []int{9}
+	return fileDescriptor_e6e1c6edfdd8e91a, []int{9}
 }
 func (m *MsgClaimSavingsReward) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -419,7 +419,7 @@ func (m *MsgClaimSavingsRewardResponse) Reset()         { *m = MsgClaimSavingsRe
 func (m *MsgClaimSavingsRewardResponse) String() string { return proto.CompactTextString(m) }
 func (*MsgClaimSavingsRewardResponse) ProtoMessage()    {}
 func (*MsgClaimSavingsRewardResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b1cec058e3ff75d5, []int{10}
+	return fileDescriptor_e6e1c6edfdd8e91a, []int{10}
 }
 func (m *MsgClaimSavingsRewardResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -458,7 +458,7 @@ func (m *MsgClaimEarnReward) Reset()         { *m = MsgClaimEarnReward{} }
 func (m *MsgClaimEarnReward) String() string { return proto.CompactTextString(m) }
 func (*MsgClaimEarnReward) ProtoMessage()    {}
 func (*MsgClaimEarnReward) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b1cec058e3ff75d5, []int{11}
+	return fileDescriptor_e6e1c6edfdd8e91a, []int{11}
 }
 func (m *MsgClaimEarnReward) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -495,7 +495,7 @@ func (m *MsgClaimEarnRewardResponse) Reset()         { *m = MsgClaimEarnRewardRe
 func (m *MsgClaimEarnRewardResponse) String() string { return proto.CompactTextString(m) }
 func (*MsgClaimEarnRewardResponse) ProtoMessage()    {}
 func (*MsgClaimEarnRewardResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b1cec058e3ff75d5, []int{12}
+	return fileDescriptor_e6e1c6edfdd8e91a, []int{12}
 }
 func (m *MsgClaimEarnRewardResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -526,8 +526,8 @@ var xxx_messageInfo_MsgClaimEarnRewardResponse proto.InternalMessageInfo
 
 func init() {
 	proto.RegisterType((*Selection)(nil), "fury.incentive.v1beta1.Selection")
-	proto.RegisterType((*MsgClaimUSDXMintingReward)(nil), "fury.incentive.v1beta1.MsgClaimUSDXMintingReward")
-	proto.RegisterType((*MsgClaimUSDXMintingRewardResponse)(nil), "fury.incentive.v1beta1.MsgClaimUSDXMintingRewardResponse")
+	proto.RegisterType((*MsgClaimMUSDMintingReward)(nil), "fury.incentive.v1beta1.MsgClaimMUSDMintingReward")
+	proto.RegisterType((*MsgClaimMUSDMintingRewardResponse)(nil), "fury.incentive.v1beta1.MsgClaimMUSDMintingRewardResponse")
 	proto.RegisterType((*MsgClaimHardReward)(nil), "fury.incentive.v1beta1.MsgClaimHardReward")
 	proto.RegisterType((*MsgClaimHardRewardResponse)(nil), "fury.incentive.v1beta1.MsgClaimHardRewardResponse")
 	proto.RegisterType((*MsgClaimDelegatorReward)(nil), "fury.incentive.v1beta1.MsgClaimDelegatorReward")
@@ -540,43 +540,44 @@ func init() {
 	proto.RegisterType((*MsgClaimEarnRewardResponse)(nil), "fury.incentive.v1beta1.MsgClaimEarnRewardResponse")
 }
 
-func init() { proto.RegisterFile("fury/incentive/v1beta1/tx.proto", fileDescriptor_b1cec058e3ff75d5) }
+func init() { proto.RegisterFile("fury/incentive/v1beta1/tx.proto", fileDescriptor_e6e1c6edfdd8e91a) }
 
-var fileDescriptor_b1cec058e3ff75d5 = []byte{
-	// 525 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x95, 0x31, 0x6f, 0xd3, 0x40,
-	0x14, 0xc7, 0x7d, 0xad, 0x5a, 0xd1, 0x87, 0x20, 0xd2, 0x29, 0x84, 0x60, 0x81, 0xdd, 0x84, 0x81,
-	0x0a, 0x54, 0x5b, 0x09, 0x42, 0x08, 0xc6, 0xd2, 0x4a, 0x2c, 0x61, 0x48, 0x8a, 0x84, 0x90, 0x50,
-	0x74, 0x49, 0x0e, 0x73, 0xc2, 0xbe, 0x33, 0xbe, 0x6b, 0x5a, 0x98, 0x98, 0x10, 0x23, 0x0b, 0x12,
-	0x62, 0xea, 0xcc, 0x27, 0xe9, 0xd8, 0x91, 0x09, 0x50, 0x22, 0x21, 0x3e, 0x06, 0x8a, 0x93, 0xd8,
-	0x56, 0x6d, 0x63, 0xd2, 0x29, 0x9b, 0xed, 0xf7, 0x7f, 0xef, 0xfd, 0xfe, 0x4f, 0x7e, 0x77, 0x60,
-	0xbe, 0x26, 0x43, 0x62, 0x33, 0xde, 0xa7, 0x5c, 0xb1, 0x21, 0xb5, 0x87, 0x8d, 0x1e, 0x55, 0xa4,
-	0x61, 0xab, 0x23, 0xcb, 0x0f, 0x84, 0x12, 0xb8, 0x32, 0x11, 0x58, 0x91, 0xc0, 0x9a, 0x09, 0xf4,
-	0xb2, 0x23, 0x1c, 0x11, 0x4a, 0xec, 0xc9, 0xd3, 0x54, 0x5d, 0xdf, 0x87, 0x8d, 0x0e, 0x75, 0x69,
-	0x5f, 0x31, 0xc1, 0x71, 0x19, 0xd6, 0x06, 0x94, 0x0b, 0xaf, 0x8a, 0x36, 0xd1, 0xd6, 0x46, 0x7b,
-	0xfa, 0x82, 0x6f, 0x41, 0xc9, 0x3b, 0x70, 0x15, 0xf3, 0x5d, 0x46, 0x83, 0x2e, 0x27, 0x1e, 0xad,
-	0xae, 0x84, 0xf1, 0xcb, 0xf1, 0xe7, 0x27, 0xc4, 0xa3, 0x0f, 0x2f, 0x7c, 0x3c, 0x36, 0xb5, 0x3f,
-	0xc7, 0xa6, 0x56, 0x7f, 0x09, 0xd7, 0x5a, 0xd2, 0x79, 0xe4, 0x12, 0xe6, 0x3d, 0xed, 0xec, 0x3e,
-	0x6b, 0x31, 0xae, 0x18, 0x77, 0xda, 0xf4, 0x90, 0x04, 0x03, 0x5c, 0x81, 0x75, 0x49, 0xf9, 0x80,
-	0x06, 0xb3, 0x36, 0xb3, 0xb7, 0xf3, 0xf4, 0xb9, 0x09, 0xb5, 0xdc, 0x3e, 0x6d, 0x2a, 0x7d, 0xc1,
-	0x25, 0xad, 0x7f, 0x46, 0x80, 0xe7, 0xaa, 0xc7, 0x61, 0xe0, 0x9f, 0x18, 0x2f, 0xa0, 0x14, 0xfa,
-	0x96, 0x5d, 0x25, 0xba, 0xfd, 0x49, 0x52, 0x75, 0x65, 0x73, 0x75, 0xeb, 0x62, 0xb3, 0x66, 0x65,
-	0x4f, 0xd6, 0x8a, 0x06, 0xb8, 0x83, 0x4f, 0x7e, 0x98, 0xda, 0xb7, 0x9f, 0x26, 0x44, 0x9f, 0x64,
-	0xfb, 0xd2, 0xb4, 0xda, 0xbe, 0x08, 0x01, 0x12, 0xf0, 0xd7, 0x41, 0x4f, 0x63, 0x45, 0xd4, 0x5f,
-	0x11, 0x5c, 0x9d, 0x87, 0x77, 0xa9, 0x4b, 0x1d, 0xa2, 0x44, 0xb0, 0x2c, 0xe8, 0x35, 0x30, 0x73,
-	0xd8, 0x32, 0xa7, 0xde, 0x39, 0x24, 0xfe, 0x12, 0x4e, 0x3d, 0xc6, 0x8a, 0xa8, 0xbf, 0x20, 0xb8,
-	0x12, 0x85, 0xc9, 0x90, 0x71, 0x47, 0x2e, 0x0b, 0xb8, 0x09, 0x37, 0x32, 0xc9, 0x32, 0x27, 0xbe,
-	0x47, 0x02, 0xbe, 0x84, 0x13, 0x8f, 0xb1, 0xe6, 0xd4, 0xcd, 0xdf, 0x6b, 0xb0, 0xda, 0x92, 0x0e,
-	0xfe, 0x80, 0xa0, 0x92, 0x73, 0x60, 0x34, 0xf2, 0x80, 0x72, 0x77, 0x5f, 0x7f, 0xb0, 0x70, 0xca,
-	0x1c, 0x08, 0xbf, 0x81, 0xd2, 0xd9, 0xa3, 0xe2, 0x76, 0x51, 0xb5, 0x58, 0xab, 0x37, 0xff, 0x5f,
-	0x1b, 0xb5, 0x7c, 0x8f, 0xa0, 0x9c, 0xb9, 0xe8, 0x76, 0x51, 0xb1, 0x33, 0x09, 0xfa, 0xfd, 0x05,
-	0x13, 0x52, 0xae, 0x13, 0xab, 0x5a, 0xe8, 0x3a, 0xd6, 0x16, 0xbb, 0x4e, 0xef, 0x1a, 0x7e, 0x07,
-	0x38, 0x63, 0xcf, 0xb6, 0x0b, 0x2b, 0x25, 0xe5, 0xfa, 0xbd, 0x85, 0xe4, 0x29, 0xbb, 0x89, 0x3d,
-	0x29, 0xb4, 0x1b, 0x6b, 0x8b, 0xed, 0xa6, 0x7f, 0xf4, 0x9d, 0xbd, 0x93, 0x91, 0x81, 0x4e, 0x47,
-	0x06, 0xfa, 0x35, 0x32, 0xd0, 0xa7, 0xb1, 0xa1, 0x9d, 0x8e, 0x0d, 0xed, 0xfb, 0xd8, 0xd0, 0x9e,
-	0xdf, 0x71, 0x98, 0x7a, 0x75, 0xd0, 0xb3, 0xfa, 0xc2, 0xb3, 0x27, 0x75, 0xb7, 0x5d, 0xd2, 0x93,
-	0xe1, 0x93, 0x7d, 0x94, 0xb8, 0xe9, 0xd5, 0x5b, 0x9f, 0xca, 0xde, 0x7a, 0x78, 0x6f, 0xdf, 0xfd,
-	0x1b, 0x00, 0x00, 0xff, 0xff, 0x28, 0x8b, 0x70, 0xee, 0x08, 0x08, 0x00, 0x00,
+var fileDescriptor_e6e1c6edfdd8e91a = []byte{
+	// 532 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x95, 0x41, 0x8b, 0xd3, 0x40,
+	0x14, 0xc7, 0x33, 0xbb, 0xec, 0xe2, 0x3e, 0xd1, 0xc2, 0x50, 0x6b, 0x0d, 0x9a, 0x6c, 0xeb, 0xc1,
+	0x45, 0xd8, 0x84, 0x56, 0x44, 0xf4, 0xb8, 0xae, 0x20, 0x48, 0x3d, 0xb4, 0x2b, 0x88, 0x20, 0x25,
+	0x6d, 0x67, 0xe3, 0x60, 0x32, 0x13, 0x33, 0x93, 0x76, 0xd7, 0x93, 0x27, 0xf1, 0xe8, 0x45, 0x10,
+	0x4f, 0x7b, 0xf6, 0x93, 0xec, 0x71, 0x8f, 0x9e, 0x54, 0x5a, 0x10, 0x3f, 0x86, 0x34, 0x6d, 0x93,
+	0xb0, 0x49, 0x8c, 0xf5, 0xd4, 0x5b, 0x66, 0xde, 0xff, 0xbd, 0xf7, 0x7b, 0x8f, 0xbc, 0x79, 0xa0,
+	0x1f, 0x06, 0xfe, 0xb1, 0x49, 0x59, 0x9f, 0x30, 0x49, 0x87, 0xc4, 0x1c, 0x36, 0x7a, 0x44, 0x5a,
+	0x0d, 0x53, 0x1e, 0x19, 0x9e, 0xcf, 0x25, 0xc7, 0x95, 0xa9, 0xc0, 0x88, 0x04, 0xc6, 0x5c, 0xa0,
+	0x96, 0x6d, 0x6e, 0xf3, 0x50, 0x62, 0x4e, 0xbf, 0x66, 0xea, 0xfa, 0x01, 0x6c, 0x75, 0x88, 0x43,
+	0xfa, 0x92, 0x72, 0x86, 0xcb, 0xb0, 0x31, 0x20, 0x8c, 0xbb, 0x55, 0xb4, 0x8d, 0x76, 0xb6, 0xda,
+	0xb3, 0x03, 0xbe, 0x05, 0x25, 0x37, 0x70, 0x24, 0xf5, 0x1c, 0x4a, 0xfc, 0x2e, 0xb3, 0x5c, 0x52,
+	0x5d, 0x0b, 0xed, 0x97, 0xe3, 0xeb, 0xa7, 0x96, 0x4b, 0x1e, 0x5c, 0xf8, 0x70, 0xa2, 0x2b, 0xbf,
+	0x4f, 0x74, 0xa5, 0x7e, 0x08, 0xd7, 0x5a, 0xc2, 0x7e, 0xe8, 0x58, 0xd4, 0x7d, 0xd6, 0xd9, 0x7f,
+	0xde, 0xa2, 0x4c, 0x52, 0x66, 0xb7, 0xc9, 0xc8, 0xf2, 0x07, 0xb8, 0x02, 0x9b, 0x82, 0xb0, 0x01,
+	0xf1, 0xe7, 0x69, 0xe6, 0xa7, 0xff, 0xc9, 0x73, 0x13, 0x6a, 0xb9, 0x79, 0xda, 0x44, 0x78, 0x9c,
+	0x09, 0x52, 0xff, 0x84, 0x00, 0x2f, 0x54, 0x8f, 0x43, 0xc3, 0x5f, 0x31, 0x5e, 0x42, 0x29, 0xac,
+	0x5b, 0x74, 0x25, 0xef, 0xf6, 0xa7, 0x4e, 0xd5, 0xb5, 0xed, 0xf5, 0x9d, 0x8b, 0xcd, 0x9a, 0x91,
+	0xdd, 0x59, 0x23, 0x6a, 0xe0, 0x1e, 0x3e, 0xfd, 0xae, 0x2b, 0x5f, 0x7f, 0xe8, 0x10, 0x5d, 0x89,
+	0xf6, 0xa5, 0x59, 0xb4, 0x03, 0x1e, 0x02, 0x24, 0xe0, 0xaf, 0x83, 0x9a, 0xc6, 0x8a, 0xa8, 0xbf,
+	0x20, 0xb8, 0xba, 0x30, 0xef, 0x13, 0x87, 0xd8, 0x96, 0xe4, 0xfe, 0xaa, 0xa0, 0xd7, 0x40, 0xcf,
+	0x61, 0xcb, 0xec, 0x7a, 0x67, 0x64, 0x79, 0x2b, 0xd8, 0xf5, 0x18, 0x2b, 0xa2, 0xfe, 0x8c, 0xe0,
+	0x4a, 0x64, 0xb6, 0x86, 0x94, 0xd9, 0x62, 0x55, 0xc0, 0x75, 0xb8, 0x91, 0x49, 0x96, 0xd9, 0xf1,
+	0x47, 0x96, 0xcf, 0x56, 0xb0, 0xe3, 0x31, 0xd6, 0x82, 0xba, 0xf9, 0x6b, 0x03, 0xd6, 0x5b, 0xc2,
+	0xc6, 0xef, 0x11, 0x54, 0x72, 0x1e, 0x8c, 0x46, 0x1e, 0x50, 0xee, 0xec, 0xab, 0xf7, 0x97, 0x76,
+	0x59, 0x00, 0xe1, 0x37, 0x50, 0x3a, 0xff, 0x54, 0xdc, 0x2e, 0x8a, 0x16, 0x6b, 0xd5, 0xe6, 0xbf,
+	0x6b, 0xa3, 0x94, 0xef, 0x10, 0x94, 0x33, 0x07, 0xdd, 0x2c, 0x0a, 0x76, 0xce, 0x41, 0xbd, 0xb7,
+	0xa4, 0x43, 0xaa, 0xea, 0xc4, 0xa8, 0x16, 0x56, 0x1d, 0x6b, 0x8b, 0xab, 0x4e, 0xcf, 0x1a, 0x7e,
+	0x0b, 0x38, 0x63, 0xce, 0x76, 0x0b, 0x23, 0x25, 0xe5, 0xea, 0xdd, 0xa5, 0xe4, 0xa9, 0x72, 0x13,
+	0x73, 0x52, 0x58, 0x6e, 0xac, 0x2d, 0x2e, 0x37, 0xfd, 0xa3, 0xef, 0x3d, 0x39, 0x1d, 0x6b, 0xe8,
+	0x6c, 0xac, 0xa1, 0x9f, 0x63, 0x0d, 0x7d, 0x9c, 0x68, 0xca, 0xd9, 0x44, 0x53, 0xbe, 0x4d, 0x34,
+	0xe5, 0x45, 0xc3, 0xa6, 0xf2, 0x55, 0xd0, 0x33, 0xfa, 0xdc, 0x9d, 0x2e, 0xf6, 0xa0, 0x17, 0x88,
+	0x5d, 0x46, 0xe4, 0x88, 0xfb, 0xaf, 0xcd, 0x70, 0xdb, 0x1f, 0x25, 0xf6, 0xbd, 0x3c, 0xf6, 0x88,
+	0xe8, 0x6d, 0x86, 0xdb, 0xfb, 0xce, 0x9f, 0x00, 0x00, 0x00, 0xff, 0xff, 0x8d, 0x69, 0xea, 0x33,
+	0x0e, 0x08, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -591,8 +592,8 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type MsgClient interface {
-	// ClaimUSDXMintingReward is a message type used to claim USDX minting rewards
-	ClaimUSDXMintingReward(ctx context.Context, in *MsgClaimUSDXMintingReward, opts ...grpc.CallOption) (*MsgClaimUSDXMintingRewardResponse, error)
+	// ClaimMUSDMintingReward is a message type used to claim MUSD minting rewards
+	ClaimMUSDMintingReward(ctx context.Context, in *MsgClaimMUSDMintingReward, opts ...grpc.CallOption) (*MsgClaimMUSDMintingRewardResponse, error)
 	// ClaimHardReward is a message type used to claim Hard liquidity provider rewards
 	ClaimHardReward(ctx context.Context, in *MsgClaimHardReward, opts ...grpc.CallOption) (*MsgClaimHardRewardResponse, error)
 	// ClaimDelegatorReward is a message type used to claim delegator rewards
@@ -613,9 +614,9 @@ func NewMsgClient(cc grpc1.ClientConn) MsgClient {
 	return &msgClient{cc}
 }
 
-func (c *msgClient) ClaimUSDXMintingReward(ctx context.Context, in *MsgClaimUSDXMintingReward, opts ...grpc.CallOption) (*MsgClaimUSDXMintingRewardResponse, error) {
-	out := new(MsgClaimUSDXMintingRewardResponse)
-	err := c.cc.Invoke(ctx, "/fury.incentive.v1beta1.Msg/ClaimUSDXMintingReward", in, out, opts...)
+func (c *msgClient) ClaimMUSDMintingReward(ctx context.Context, in *MsgClaimMUSDMintingReward, opts ...grpc.CallOption) (*MsgClaimMUSDMintingRewardResponse, error) {
+	out := new(MsgClaimMUSDMintingRewardResponse)
+	err := c.cc.Invoke(ctx, "/fury.incentive.v1beta1.Msg/ClaimMUSDMintingReward", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -669,8 +670,8 @@ func (c *msgClient) ClaimEarnReward(ctx context.Context, in *MsgClaimEarnReward,
 
 // MsgServer is the server API for Msg service.
 type MsgServer interface {
-	// ClaimUSDXMintingReward is a message type used to claim USDX minting rewards
-	ClaimUSDXMintingReward(context.Context, *MsgClaimUSDXMintingReward) (*MsgClaimUSDXMintingRewardResponse, error)
+	// ClaimMUSDMintingReward is a message type used to claim MUSD minting rewards
+	ClaimMUSDMintingReward(context.Context, *MsgClaimMUSDMintingReward) (*MsgClaimMUSDMintingRewardResponse, error)
 	// ClaimHardReward is a message type used to claim Hard liquidity provider rewards
 	ClaimHardReward(context.Context, *MsgClaimHardReward) (*MsgClaimHardRewardResponse, error)
 	// ClaimDelegatorReward is a message type used to claim delegator rewards
@@ -687,8 +688,8 @@ type MsgServer interface {
 type UnimplementedMsgServer struct {
 }
 
-func (*UnimplementedMsgServer) ClaimUSDXMintingReward(ctx context.Context, req *MsgClaimUSDXMintingReward) (*MsgClaimUSDXMintingRewardResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ClaimUSDXMintingReward not implemented")
+func (*UnimplementedMsgServer) ClaimMUSDMintingReward(ctx context.Context, req *MsgClaimMUSDMintingReward) (*MsgClaimMUSDMintingRewardResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ClaimMUSDMintingReward not implemented")
 }
 func (*UnimplementedMsgServer) ClaimHardReward(ctx context.Context, req *MsgClaimHardReward) (*MsgClaimHardRewardResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ClaimHardReward not implemented")
@@ -710,20 +711,20 @@ func RegisterMsgServer(s grpc1.Server, srv MsgServer) {
 	s.RegisterService(&_Msg_serviceDesc, srv)
 }
 
-func _Msg_ClaimUSDXMintingReward_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MsgClaimUSDXMintingReward)
+func _Msg_ClaimMUSDMintingReward_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgClaimMUSDMintingReward)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MsgServer).ClaimUSDXMintingReward(ctx, in)
+		return srv.(MsgServer).ClaimMUSDMintingReward(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/fury.incentive.v1beta1.Msg/ClaimUSDXMintingReward",
+		FullMethod: "/fury.incentive.v1beta1.Msg/ClaimMUSDMintingReward",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MsgServer).ClaimUSDXMintingReward(ctx, req.(*MsgClaimUSDXMintingReward))
+		return srv.(MsgServer).ClaimMUSDMintingReward(ctx, req.(*MsgClaimMUSDMintingReward))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -823,8 +824,8 @@ var _Msg_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*MsgServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "ClaimUSDXMintingReward",
-			Handler:    _Msg_ClaimUSDXMintingReward_Handler,
+			MethodName: "ClaimMUSDMintingReward",
+			Handler:    _Msg_ClaimMUSDMintingReward_Handler,
 		},
 		{
 			MethodName: "ClaimHardReward",
@@ -888,7 +889,7 @@ func (m *Selection) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *MsgClaimUSDXMintingReward) Marshal() (dAtA []byte, err error) {
+func (m *MsgClaimMUSDMintingReward) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -898,12 +899,12 @@ func (m *MsgClaimUSDXMintingReward) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *MsgClaimUSDXMintingReward) MarshalTo(dAtA []byte) (int, error) {
+func (m *MsgClaimMUSDMintingReward) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *MsgClaimUSDXMintingReward) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *MsgClaimMUSDMintingReward) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -925,7 +926,7 @@ func (m *MsgClaimUSDXMintingReward) MarshalToSizedBuffer(dAtA []byte) (int, erro
 	return len(dAtA) - i, nil
 }
 
-func (m *MsgClaimUSDXMintingRewardResponse) Marshal() (dAtA []byte, err error) {
+func (m *MsgClaimMUSDMintingRewardResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -935,12 +936,12 @@ func (m *MsgClaimUSDXMintingRewardResponse) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *MsgClaimUSDXMintingRewardResponse) MarshalTo(dAtA []byte) (int, error) {
+func (m *MsgClaimMUSDMintingRewardResponse) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *MsgClaimUSDXMintingRewardResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *MsgClaimMUSDMintingRewardResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -1311,7 +1312,7 @@ func (m *Selection) Size() (n int) {
 	return n
 }
 
-func (m *MsgClaimUSDXMintingReward) Size() (n int) {
+func (m *MsgClaimMUSDMintingReward) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -1328,7 +1329,7 @@ func (m *MsgClaimUSDXMintingReward) Size() (n int) {
 	return n
 }
 
-func (m *MsgClaimUSDXMintingRewardResponse) Size() (n int) {
+func (m *MsgClaimMUSDMintingRewardResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -1597,7 +1598,7 @@ func (m *Selection) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *MsgClaimUSDXMintingReward) Unmarshal(dAtA []byte) error {
+func (m *MsgClaimMUSDMintingReward) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1620,10 +1621,10 @@ func (m *MsgClaimUSDXMintingReward) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: MsgClaimUSDXMintingReward: wiretype end group for non-group")
+			return fmt.Errorf("proto: MsgClaimMUSDMintingReward: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MsgClaimUSDXMintingReward: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: MsgClaimMUSDMintingReward: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -1711,7 +1712,7 @@ func (m *MsgClaimUSDXMintingReward) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *MsgClaimUSDXMintingRewardResponse) Unmarshal(dAtA []byte) error {
+func (m *MsgClaimMUSDMintingRewardResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1734,10 +1735,10 @@ func (m *MsgClaimUSDXMintingRewardResponse) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: MsgClaimUSDXMintingRewardResponse: wiretype end group for non-group")
+			return fmt.Errorf("proto: MsgClaimMUSDMintingRewardResponse: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MsgClaimUSDXMintingRewardResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: MsgClaimMUSDMintingRewardResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		default:

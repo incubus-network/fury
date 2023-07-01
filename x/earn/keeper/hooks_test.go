@@ -30,7 +30,7 @@ func (suite *hookTestSuite) TestHooks_DepositAndWithdraw() {
 	earnHooks := mocks.NewEarnHooks(suite.T())
 	suite.Keeper.SetHooks(earnHooks)
 
-	vault1Denom := "usdx"
+	vault1Denom := "musd"
 	vault2Denom := "ufury"
 	acc1deposit1Amount := sdk.NewInt64Coin(vault1Denom, 100)
 	acc1deposit2Amount := sdk.NewInt64Coin(vault2Denom, 200)
@@ -473,7 +473,7 @@ func (suite *hookTestSuite) TestHooks_DepositAndWithdraw() {
 func (suite *hookTestSuite) TestHooks_NoPanicsOnNilHooks() {
 	suite.Keeper.ClearHooks()
 
-	vaultDenom := "usdx"
+	vaultDenom := "musd"
 	startBalance := sdk.NewInt64Coin(vaultDenom, 1000)
 	depositAmount := sdk.NewInt64Coin(vaultDenom, 100)
 	withdrawAmount := sdk.NewInt64Coin(vaultDenom, 100)
@@ -500,7 +500,7 @@ func (suite *hookTestSuite) TestHooks_HookOrdering() {
 	earnHooks := &mocks.EarnHooks{}
 	suite.Keeper.SetHooks(earnHooks)
 
-	vaultDenom := "usdx"
+	vaultDenom := "musd"
 	startBalance := sdk.NewInt64Coin(vaultDenom, 1000)
 	depositAmount := sdk.NewInt64Coin(vaultDenom, 100)
 

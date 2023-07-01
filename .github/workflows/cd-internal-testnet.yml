@@ -19,7 +19,7 @@ jobs:
     uses: ./.github/workflows/cd-reset-internal-testnet.yml
     with:
       aws-region: us-east-1
-      chain-id: fury_2221-17000
+      chain-id: highbury_710-001
       ssm-document-name: fury-testnet-internal-node-update
       playbook-name: reset-internal-testnet-playbook.yml
       playbook-infrastructure-branch: master
@@ -30,7 +30,7 @@ jobs:
     uses: ./.github/workflows/cd-start-chain.yml
     with:
       aws-region: us-east-1
-      chain-id: fury_2221-17000
+      chain-id: highbury_710-001
       ssm-document-name: fury-testnet-internal-node-update
       playbook-name: start-chain-api-playbook.yml
       playbook-infrastructure-branch: master
@@ -42,7 +42,7 @@ jobs:
     uses: ./.github/workflows/cd-seed-chain.yml
     with:
       chain-api-url: https://rpc.app.internal.testnet.us-east.production.fury.io:443
-      chain-id: fury_2221-17000
+      chain-id: highbury_710-001
       seed-script-filename: seed-internal-testnet.sh
       erc20-deployer-network-name: internal_testnet
       genesis_validator_addresses: "furyvaloper1xcgtffvv2yeqmgs3yz4gv29kgjrj8usxrnrlwp furyvaloper1w66m9hdzwgd6uc8g93zqkcumgwzrpcw958sh3s"

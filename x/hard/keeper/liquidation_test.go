@@ -329,20 +329,20 @@ func (suite *KeeperTestSuite) TestKeeperLiquidation() {
 				keeper:               keeper,
 				keeperRewardPercent:  sdk.MustNewDecFromStr("0.05"),
 				initialModuleCoins:   sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(1000*FURY_CF)), sdk.NewCoin("bnb", sdkmath.NewInt(1000*BNB_CF)), sdk.NewCoin("btc", sdkmath.NewInt(1000*BTCB_CF))),
-				initialBorrowerCoins: sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(100*FURY_CF)), sdk.NewCoin("usdc", sdkmath.NewInt(100*FURY_CF)), sdk.NewCoin("usdt", sdkmath.NewInt(100*FURY_CF)), sdk.NewCoin("usdx", sdkmath.NewInt(100*FURY_CF))),
+				initialBorrowerCoins: sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(100*FURY_CF)), sdk.NewCoin("usdc", sdkmath.NewInt(100*FURY_CF)), sdk.NewCoin("usdt", sdkmath.NewInt(100*FURY_CF)), sdk.NewCoin("musd", sdkmath.NewInt(100*FURY_CF))),
 				initialKeeperCoins:   sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(100*FURY_CF))),
-				depositCoins:         sdk.NewCoins(sdk.NewCoin("usdc", sdkmath.NewInt(100*FURY_CF)), sdk.NewCoin("usdt", sdkmath.NewInt(100*FURY_CF)), sdk.NewCoin("usdx", sdkmath.NewInt(100*FURY_CF))), // $100 + $100 + $100 = $300 * 0.9 = $270 borrowable
+				depositCoins:         sdk.NewCoins(sdk.NewCoin("usdc", sdkmath.NewInt(100*FURY_CF)), sdk.NewCoin("usdt", sdkmath.NewInt(100*FURY_CF)), sdk.NewCoin("musd", sdkmath.NewInt(100*FURY_CF))), // $100 + $100 + $100 = $300 * 0.9 = $270 borrowable
 				borrowCoins:          sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(35*FURY_CF)), sdk.NewCoin("bnb", sdkmath.NewInt(10*BNB_CF)), sdk.NewCoin("btc", sdkmath.NewInt(1*BTCB_CF))),       // $270 borrowed
 				liquidateAfter:       oneMonthDur,
 				expectedTotalSuppliedCoins: sdk.NewCoins(
 					sdk.NewInt64Coin("bnb", 100000078047),
 					sdk.NewInt64Coin("btc", 100000000780),
 					sdk.NewInt64Coin("ufury", 1000009550),
-					sdk.NewInt64Coin("usdx", 1),
+					sdk.NewInt64Coin("musd", 1),
 				),
 				expectedTotalBorrowedCoins: nil,
-				expectedKeeperCoins:        sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(100*FURY_CF)), sdk.NewCoin("usdc", sdkmath.NewInt(5*FURY_CF)), sdk.NewCoin("usdt", sdkmath.NewInt(5*FURY_CF)), sdk.NewCoin("usdx", sdkmath.NewInt(5*FURY_CF))), // 5% of each seized coin + initial balances
-				expectedBorrowerCoins:      sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(135*FURY_CF)), sdk.NewCoin("bnb", sdkmath.NewInt(10*BNB_CF)), sdk.NewCoin("btc", sdkmath.NewInt(1*BTCB_CF)), sdk.NewCoin("usdx", sdkmath.NewInt(0.000001*FURY_CF))),
+				expectedKeeperCoins:        sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(100*FURY_CF)), sdk.NewCoin("usdc", sdkmath.NewInt(5*FURY_CF)), sdk.NewCoin("usdt", sdkmath.NewInt(5*FURY_CF)), sdk.NewCoin("musd", sdkmath.NewInt(5*FURY_CF))), // 5% of each seized coin + initial balances
+				expectedBorrowerCoins:      sdk.NewCoins(sdk.NewCoin("ufury", sdkmath.NewInt(135*FURY_CF)), sdk.NewCoin("bnb", sdkmath.NewInt(10*BNB_CF)), sdk.NewCoin("btc", sdkmath.NewInt(1*BTCB_CF)), sdk.NewCoin("musd", sdkmath.NewInt(0.000001*FURY_CF))),
 				expectedAuctions: []auctiontypes.Auction{
 					&auctiontypes.CollateralAuction{
 						BaseAuction: auctiontypes.BaseAuction{
@@ -393,7 +393,7 @@ func (suite *KeeperTestSuite) TestKeeperLiquidation() {
 						BaseAuction: auctiontypes.BaseAuction{
 							ID:              4,
 							Initiator:       "hard",
-							Lot:             sdk.NewInt64Coin("usdx", 21097866), // $21.10
+							Lot:             sdk.NewInt64Coin("musd", 21097866), // $21.10
 							Bidder:          sdk.AccAddress(nil),
 							Bid:             sdk.NewInt64Coin("btc", 0),
 							HasReceivedBids: false,
@@ -408,7 +408,7 @@ func (suite *KeeperTestSuite) TestKeeperLiquidation() {
 						BaseAuction: auctiontypes.BaseAuction{
 							ID:              5,
 							Initiator:       "hard",
-							Lot:             sdk.NewInt64Coin("usdx", 73902133), //$73.90
+							Lot:             sdk.NewInt64Coin("musd", 73902133), //$73.90
 							Bidder:          sdk.AccAddress(nil),
 							Bid:             sdk.NewInt64Coin("ufury", 0),
 							HasReceivedBids: false,
@@ -432,21 +432,21 @@ func (suite *KeeperTestSuite) TestKeeperLiquidation() {
 				borrower:             borrower,
 				keeper:               keeper,
 				keeperRewardPercent:  sdk.MustNewDecFromStr("0.05"),
-				initialModuleCoins:   sdk.NewCoins(sdk.NewCoin("usdx", sdkmath.NewInt(1000*FURY_CF)), sdk.NewCoin("usdt", sdkmath.NewInt(1000*FURY_CF)), sdk.NewCoin("dai", sdkmath.NewInt(1000*FURY_CF)), sdk.NewCoin("usdc", sdkmath.NewInt(1000*FURY_CF))),
-				initialBorrowerCoins: sdk.NewCoins(sdk.NewCoin("usdx", sdkmath.NewInt(1000*FURY_CF)), sdk.NewCoin("usdt", sdkmath.NewInt(1000*FURY_CF)), sdk.NewCoin("dai", sdkmath.NewInt(1000*FURY_CF)), sdk.NewCoin("usdc", sdkmath.NewInt(1000*FURY_CF))),
-				initialKeeperCoins:   sdk.NewCoins(sdk.NewCoin("usdx", sdkmath.NewInt(1000*FURY_CF)), sdk.NewCoin("usdt", sdkmath.NewInt(1000*FURY_CF)), sdk.NewCoin("dai", sdkmath.NewInt(1000*FURY_CF)), sdk.NewCoin("usdc", sdkmath.NewInt(1000*FURY_CF))),
+				initialModuleCoins:   sdk.NewCoins(sdk.NewCoin("musd", sdkmath.NewInt(1000*FURY_CF)), sdk.NewCoin("usdt", sdkmath.NewInt(1000*FURY_CF)), sdk.NewCoin("dai", sdkmath.NewInt(1000*FURY_CF)), sdk.NewCoin("usdc", sdkmath.NewInt(1000*FURY_CF))),
+				initialBorrowerCoins: sdk.NewCoins(sdk.NewCoin("musd", sdkmath.NewInt(1000*FURY_CF)), sdk.NewCoin("usdt", sdkmath.NewInt(1000*FURY_CF)), sdk.NewCoin("dai", sdkmath.NewInt(1000*FURY_CF)), sdk.NewCoin("usdc", sdkmath.NewInt(1000*FURY_CF))),
+				initialKeeperCoins:   sdk.NewCoins(sdk.NewCoin("musd", sdkmath.NewInt(1000*FURY_CF)), sdk.NewCoin("usdt", sdkmath.NewInt(1000*FURY_CF)), sdk.NewCoin("dai", sdkmath.NewInt(1000*FURY_CF)), sdk.NewCoin("usdc", sdkmath.NewInt(1000*FURY_CF))),
 				depositCoins:         sdk.NewCoins(sdk.NewCoin("dai", sdkmath.NewInt(350*FURY_CF)), sdk.NewCoin("usdc", sdkmath.NewInt(200*FURY_CF))),
-				borrowCoins:          sdk.NewCoins(sdk.NewCoin("usdt", sdkmath.NewInt(250*FURY_CF)), sdk.NewCoin("usdx", sdkmath.NewInt(245*FURY_CF))),
+				borrowCoins:          sdk.NewCoins(sdk.NewCoin("usdt", sdkmath.NewInt(250*FURY_CF)), sdk.NewCoin("musd", sdkmath.NewInt(245*FURY_CF))),
 				liquidateAfter:       oneMonthDur,
 				expectedTotalSuppliedCoins: sdk.NewCoins(
 					sdk.NewInt64Coin("dai", 1000000000),
 					sdk.NewInt64Coin("usdc", 1000000001),
 					sdk.NewInt64Coin("usdt", 1000482503),
-					sdk.NewInt64Coin("usdx", 1000463500),
+					sdk.NewInt64Coin("musd", 1000463500),
 				),
 				expectedTotalBorrowedCoins: nil,
-				expectedKeeperCoins:        sdk.NewCoins(sdk.NewCoin("dai", sdkmath.NewInt(1017.50*FURY_CF)), sdk.NewCoin("usdt", sdkmath.NewInt(1000*FURY_CF)), sdk.NewCoin("usdc", sdkmath.NewInt(1010*FURY_CF)), sdk.NewCoin("usdx", sdkmath.NewInt(1000*FURY_CF))),
-				expectedBorrowerCoins:      sdk.NewCoins(sdk.NewCoin("dai", sdkmath.NewInt(650*FURY_CF)), sdk.NewCoin("usdc", sdkmath.NewInt(800000001)), sdk.NewCoin("usdt", sdkmath.NewInt(1250*FURY_CF)), sdk.NewCoin("usdx", sdkmath.NewInt(1245*FURY_CF))),
+				expectedKeeperCoins:        sdk.NewCoins(sdk.NewCoin("dai", sdkmath.NewInt(1017.50*FURY_CF)), sdk.NewCoin("usdt", sdkmath.NewInt(1000*FURY_CF)), sdk.NewCoin("usdc", sdkmath.NewInt(1010*FURY_CF)), sdk.NewCoin("musd", sdkmath.NewInt(1000*FURY_CF))),
+				expectedBorrowerCoins:      sdk.NewCoins(sdk.NewCoin("dai", sdkmath.NewInt(650*FURY_CF)), sdk.NewCoin("usdc", sdkmath.NewInt(800000001)), sdk.NewCoin("usdt", sdkmath.NewInt(1250*FURY_CF)), sdk.NewCoin("musd", sdkmath.NewInt(1245*FURY_CF))),
 				expectedAuctions: []auctiontypes.Auction{
 					&auctiontypes.CollateralAuction{
 						BaseAuction: auctiontypes.BaseAuction{
@@ -469,13 +469,13 @@ func (suite *KeeperTestSuite) TestKeeperLiquidation() {
 							Initiator:       "hard",
 							Lot:             sdk.NewInt64Coin("dai", 68605874),
 							Bidder:          sdk.AccAddress(nil),
-							Bid:             sdk.NewInt64Coin("usdx", 0),
+							Bid:             sdk.NewInt64Coin("musd", 0),
 							HasReceivedBids: false,
 							EndTime:         endTime,
 							MaxEndTime:      endTime,
 						},
 						CorrespondingDebt: sdk.NewInt64Coin("debt", 0),
-						MaxBid:            sdk.NewInt64Coin("usdx", 65125788),
+						MaxBid:            sdk.NewInt64Coin("musd", 65125788),
 						LotReturns:        lotReturns,
 					},
 					&auctiontypes.CollateralAuction{
@@ -484,13 +484,13 @@ func (suite *KeeperTestSuite) TestKeeperLiquidation() {
 							Initiator:       "hard",
 							Lot:             sdk.NewInt64Coin("usdc", 189999999),
 							Bidder:          sdk.AccAddress(nil),
-							Bid:             sdk.NewInt64Coin("usdx", 0),
+							Bid:             sdk.NewInt64Coin("musd", 0),
 							HasReceivedBids: false,
 							EndTime:         endTime,
 							MaxEndTime:      endTime,
 						},
 						CorrespondingDebt: sdk.NewInt64Coin("debt", 0),
-						MaxBid:            sdk.NewInt64Coin("usdx", 180362106),
+						MaxBid:            sdk.NewInt64Coin("musd", 180362106),
 						LotReturns:        lotReturns,
 					},
 				},
@@ -552,9 +552,9 @@ func (suite *KeeperTestSuite) TestKeeperLiquidation() {
 			// Hard module genesis state
 			hardGS := types.NewGenesisState(types.NewParams(
 				types.MoneyMarkets{
-					types.NewMoneyMarket("usdx",
+					types.NewMoneyMarket("musd",
 						types.NewBorrowLimit(false, sdk.NewDec(100000000*FURY_CF), sdk.MustNewDecFromStr("0.9")), // Borrow Limit
-						"usdx:usd",                   // Market ID
+						"musd:usd",                   // Market ID
 						sdkmath.NewInt(FURY_CF),      // Conversion Factor
 						model,                        // Interest Rate Model
 						reserveFactor,                // Reserve Factor
@@ -611,7 +611,7 @@ func (suite *KeeperTestSuite) TestKeeperLiquidation() {
 			pricefeedGS := pricefeedtypes.GenesisState{
 				Params: pricefeedtypes.Params{
 					Markets: []pricefeedtypes.Market{
-						{MarketID: "usdx:usd", BaseAsset: "usdx", QuoteAsset: "usd", Oracles: []sdk.AccAddress{}, Active: true},
+						{MarketID: "musd:usd", BaseAsset: "musd", QuoteAsset: "usd", Oracles: []sdk.AccAddress{}, Active: true},
 						{MarketID: "usdt:usd", BaseAsset: "usdt", QuoteAsset: "usd", Oracles: []sdk.AccAddress{}, Active: true},
 						{MarketID: "usdc:usd", BaseAsset: "usdc", QuoteAsset: "usd", Oracles: []sdk.AccAddress{}, Active: true},
 						{MarketID: "dai:usd", BaseAsset: "dai", QuoteAsset: "usd", Oracles: []sdk.AccAddress{}, Active: true},
@@ -622,7 +622,7 @@ func (suite *KeeperTestSuite) TestKeeperLiquidation() {
 				},
 				PostedPrices: []pricefeedtypes.PostedPrice{
 					{
-						MarketID:      "usdx:usd",
+						MarketID:      "musd:usd",
 						OracleAddress: sdk.AccAddress{},
 						Price:         sdk.MustNewDecFromStr("1.00"),
 						Expiry:        time.Now().Add(100 * time.Hour),

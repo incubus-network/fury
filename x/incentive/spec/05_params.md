@@ -8,7 +8,7 @@ The incentive module contains the following parameters:
 
 | Key                      | Type               | Example                | Description                                  |
 | ------------------------ | ------------------ | ---------------------- | -------------------------------------------- |
-| USDXMintingRewardPeriods | RewardPeriods      | [{see below}]          | USDX minting reward periods                  |
+| MUSDMintingRewardPeriods | RewardPeriods      | [{see below}]          | MUSD minting reward periods                  |
 | HardSupplyRewardPeriods  | MultiRewardPeriods | [{see below}]          | Hard supply reward periods                   |
 | HardBorrowRewardPeriods  | MultiRewardPeriods | [{see below}]          | Hard borrow reward periods                   |
 | DelegatorRewardPeriods   | MultiRewardPeriods | [{see below}]          | Delegator reward periods                     |

@@ -12,8 +12,8 @@ set -ex
 
 # setup values used by the script, in github actions these
 # are set as environment variables when running seed scripts
-CHAIN_API_URL=https://rpc.app.internal.testnet.us-east.production.fury.io:443
-CHAIN_ID=fury_2221-17000
+CHAIN_API_URL=https://rpc.fury.black
+CHAIN_ID=highbury_710-001
 
 MULTICHAIN_wBTC_CONTRACT_ADDRESS=0x288429bc07B8d030ba418bb30F170327F9fBE502
 MULTICHAIN_USDC_CONTRACT_ADDRESS=0xBb304f44b7EFD865361F2AD973d8ebA433893ABC

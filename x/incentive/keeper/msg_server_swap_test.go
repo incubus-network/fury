@@ -68,7 +68,7 @@ func (suite *HandlerTestSuite) SetupWithGenState(builders ...testutil.GenesisBui
 // authBuilder returns a new auth genesis builder with a full furydist module account.
 func (suite *HandlerTestSuite) authBuilder() *app.AuthBankGenesisBuilder {
 	return app.NewAuthBankGenesisBuilder().
-		WithSimpleModuleAccount(furydisttypes.ModuleName, cs(c(types.USDXMintingRewardDenom, 1e18), c("hard", 1e18), c("swap", 1e18)))
+		WithSimpleModuleAccount(furydisttypes.ModuleName, cs(c(types.MUSDMintingRewardDenom, 1e18), c("hard", 1e18), c("swap", 1e18)))
 }
 
 // incentiveBuilder returns a new incentive genesis builder with a genesis time and multipliers set
