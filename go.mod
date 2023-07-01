@@ -200,13 +200,13 @@ replace (
 	// Use the cosmos keyring code
 	github.com/99designs/keyring => github.com/cosmos/keyring v1.2.0
 	// Use rocksdb 7.9.2
-	github.com/cometbft/cometbft-db => github.com/fury-labs/cometbft-db v0.7.0-rocksdb-v7.9.2-fury.1
+	github.com/cometbft/cometbft-db => github.com/kava-labs/cometbft-db v0.7.0-rocksdb-v7.9.2-fury.1
 	// Use cosmos-sdk fork with backported fix for unsafe-reset-all, staking transfer events, and custom tally handler support
-	github.com/cosmos/cosmos-sdk => github.com/fury-labs/cosmos-sdk v0.46.11-fury.1
+	github.com/cosmos/cosmos-sdk => github.com/kava-labs/cosmos-sdk v0.46.11-fury.1
 	// See https://github.com/cosmos/cosmos-sdk/pull/13093
 	github.com/dgrijalva/jwt-go => github.com/golang-jwt/jwt/v4 v4.4.2
 	// Use ethermint fork that respects min-gas-price with NoBaseFee true and london enabled, and includes eip712 support
-	github.com/evmos/ethermint => github.com/fury-labs/ethermint v0.21.0-fury-v23-1
+	github.com/evmos/ethermint => github.com/kava-labs/ethermint v0.21.0-fury-v23-1
 	// See https://github.com/cosmos/cosmos-sdk/pull/10401, https://github.com/cosmos/cosmos-sdk/commit/0592ba6158cd0bf49d894be1cef4faeec59e8320
 	github.com/gin-gonic/gin => github.com/gin-gonic/gin v1.7.0
 	// Use the cosmos modified protobufs
@@ -216,5 +216,5 @@ replace (
 	// Use cometbft fork of tendermint
 	github.com/tendermint/tendermint => github.com/cometbft/cometbft v0.34.27
 	// Indirect dependencies still use tendermint/tm-db
-	github.com/tendermint/tm-db => github.com/fury-labs/tm-db v0.6.7-fury.3
+	github.com/tendermint/tm-db => github.com/kava-labs/tm-db v0.6.7-fury.3
 )
