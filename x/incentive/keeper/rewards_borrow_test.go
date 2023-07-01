@@ -15,12 +15,12 @@ import (
 	"github.com/incubus-network/fury/x/committee"
 	committeekeeper "github.com/incubus-network/fury/x/committee/keeper"
 	committeetypes "github.com/incubus-network/fury/x/committee/types"
+	furydisttypes "github.com/incubus-network/fury/x/furydist/types"
 	"github.com/incubus-network/fury/x/hard"
 	hardkeeper "github.com/incubus-network/fury/x/hard/keeper"
 	"github.com/incubus-network/fury/x/incentive/keeper"
 	"github.com/incubus-network/fury/x/incentive/testutil"
 	"github.com/incubus-network/fury/x/incentive/types"
-	furydisttypes "github.com/incubus-network/fury/x/furydist/types"
 )
 
 type BorrowIntegrationTests struct {

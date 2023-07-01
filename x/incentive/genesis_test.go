@@ -12,11 +12,11 @@ import (
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 
 	"github.com/incubus-network/fury/app"
+	furydisttypes "github.com/incubus-network/fury/x/furydist/types"
 	hardtypes "github.com/incubus-network/fury/x/hard/types"
 	"github.com/incubus-network/fury/x/incentive"
 	"github.com/incubus-network/fury/x/incentive/keeper"
 	"github.com/incubus-network/fury/x/incentive/types"
-	furydisttypes "github.com/incubus-network/fury/x/furydist/types"
 )
 
 const (

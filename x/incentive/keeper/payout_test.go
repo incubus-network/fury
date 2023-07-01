@@ -15,11 +15,11 @@ import (
 	"github.com/incubus-network/fury/app"
 	cdpkeeper "github.com/incubus-network/fury/x/cdp/keeper"
 	cdptypes "github.com/incubus-network/fury/x/cdp/types"
+	furydisttypes "github.com/incubus-network/fury/x/furydist/types"
 	hardkeeper "github.com/incubus-network/fury/x/hard/keeper"
 	"github.com/incubus-network/fury/x/incentive/keeper"
 	"github.com/incubus-network/fury/x/incentive/testutil"
 	"github.com/incubus-network/fury/x/incentive/types"
-	furydisttypes "github.com/incubus-network/fury/x/furydist/types"
 )
 
 // Test suite used for all keeper tests

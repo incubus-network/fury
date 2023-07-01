@@ -10,9 +10,9 @@ import (
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 
 	"github.com/incubus-network/fury/app"
+	furydisttypes "github.com/incubus-network/fury/x/furydist/types"
 	"github.com/incubus-network/fury/x/incentive/testutil"
 	"github.com/incubus-network/fury/x/incentive/types"
-	furydisttypes "github.com/incubus-network/fury/x/furydist/types"
 )
 
 const secondsPerDay = 24 * 60 * 60
