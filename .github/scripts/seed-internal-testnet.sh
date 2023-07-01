@@ -1,37 +1,37 @@
 #!/bin/bash
 set -ex
 
-# configure kava binary to talk to the desired chain endpoint
-kava config node "${CHAIN_API_URL}"
-kava config chain-id "${CHAIN_ID}"
+# configure fury binary to talk to the desired chain endpoint
+fury config node "${CHAIN_API_URL}"
+fury config chain-id "${CHAIN_ID}"
 
 # use the test keyring to allow scriptng key generation
-kava config keyring-backend test
+fury config keyring-backend test
 
 # wait for transactions to be committed per CLI command
-kava config broadcast-mode block
+fury config broadcast-mode block
 
 # setup dev wallet
-echo "${DEV_WALLET_MNEMONIC}" | kava keys add --recover dev-wallet
+echo "${DEV_WALLET_MNEMONIC}" | fury keys add --recover dev-wallet
 DEV_TEST_WALLET_ADDRESS="0x672B12324A7a2f71f6D3dd2fD3C0b8c1C482f1e9"
 WEBAPP_E2E_WHALE_ADDRESS="0x9E8F92E2808a4718AF3f28585b153b3Cc2117Ca8"
 
-# setup kava ethereum compatible account for deploying
-# erc20 contracts to the kava chain
-echo "choice give picture midnight tower jewel reunion cruise history lock universe second connect employ deny poem extend shoe design siren dose dream fault" | kava keys add --recover --eth dev-erc20-deployer-wallet
+# setup fury ethereum compatible account for deploying
+# erc20 contracts to the fury chain
+echo "choice give picture midnight tower jewel reunion cruise history lock universe second connect employ deny poem extend shoe design siren dose dream fault" | fury keys add --recover --eth dev-erc20-deployer-wallet
 
 # fund evm-contract-deployer account (using issuance)
-kava tx issuance issue 200000000ukava fury1van3znl6597xgwwh46jgquutnqkwvwsz7kj8v2 --from dev-wallet --gas-prices 0.5ukava -y
+fury tx issuance issue 200000000ufury fury1van3znl6597xgwwh46jgquutnqkwvwsz7kj8v2 --from dev-wallet --gas-prices 0.5ufury -y
 
 # deploy and fund USDC ERC20 contract
 MULTICHAIN_USDC_CONTRACT_DEPLOY=$(npx hardhat --network "${ERC20_DEPLOYER_NETWORK_NAME}" deploy-erc20 "USD Coin" USDC 6)
 MULTICHAIN_USDC_CONTRACT_ADDRESS=${MULTICHAIN_USDC_CONTRACT_DEPLOY: -42}
 npx hardhat --network "${ERC20_DEPLOYER_NETWORK_NAME}" mint-erc20 "$MULTICHAIN_USDC_CONTRACT_ADDRESS" 0x6767114FFAA17C6439D7AEA480738B982CE63A02 1000000000000
 
-# # deploy and fund wKava ERC20 contract
-wKAVA_CONTRACT_DEPLOY=$(npx hardhat --network "${ERC20_DEPLOYER_NETWORK_NAME}" deploy-erc20 "Wrapped Kava" wKava 6)
-wKAVA_CONTRACT_ADDRESS=${wKAVA_CONTRACT_DEPLOY: -42}
-npx hardhat --network "${ERC20_DEPLOYER_NETWORK_NAME}" mint-erc20 "$wKAVA_CONTRACT_ADDRESS" 0x6767114FFAA17C6439D7AEA480738B982CE63A02 1000000000000
+# # deploy and fund wFury ERC20 contract
+wFURY_CONTRACT_DEPLOY=$(npx hardhat --network "${ERC20_DEPLOYER_NETWORK_NAME}" deploy-erc20 "Wrapped Fury" wFury 6)
+wFURY_CONTRACT_ADDRESS=${wFURY_CONTRACT_DEPLOY: -42}
+npx hardhat --network "${ERC20_DEPLOYER_NETWORK_NAME}" mint-erc20 "$wFURY_CONTRACT_ADDRESS" 0x6767114FFAA17C6439D7AEA480738B982CE63A02 1000000000000
 
 # deploy and fund BNB contract
 BNB_CONTRACT_DEPLOY=$(npx hardhat --network "${ERC20_DEPLOYER_NETWORK_NAME}" deploy-erc20 "Binance" BNB 8)
@@ -92,24 +92,24 @@ npx hardhat --network "${ERC20_DEPLOYER_NETWORK_NAME}" mint-erc20 "$TETHER_USDT_
 
 # give dev-wallet enough delegation power to pass proposals by itself
 
-# issue kava to dev wallet for delegating to each validator
-kava tx issuance issue 6000000000ukava kava1q0dkky0505r555etn6u2nz4h4kjcg5y8pk6g54 \
-  --from dev-wallet --gas-prices 0.5ukava -y
+# issue fury to dev wallet for delegating to each validator
+fury tx issuance issue 6000000000ufury fury1q0dkky0505r555etn6u2nz4h4kjcg5y8pk6g54 \
+  --from dev-wallet --gas-prices 0.5ufury -y
 
 # parse space seperated list of validators
 # into bash array
 read -r -a GENESIS_VALIDATOR_ADDRESS_ARRAY <<<"$GENESIS_VALIDATOR_ADDRESSES"
 
-# delegate 300KAVA to each validator
+# delegate 300FURY to each validator
 for validator in "${GENESIS_VALIDATOR_ADDRESS_ARRAY[@]}"; do
-  kava tx staking delegate "${validator}" 300000000ukava --from dev-wallet --gas-prices 0.5ukava -y
+  fury tx staking delegate "${validator}" 300000000ufury --from dev-wallet --gas-prices 0.5ufury -y
 done
 
 # create a text proposal
-kava tx gov submit-legacy-proposal --deposit 1000000000ukava --type "Text" --title "Example Proposal" --description "This is an example proposal" --gas auto --gas-adjustment 1.2 --from dev-wallet --gas-prices 0.01ukava -y
+fury tx gov submit-legacy-proposal --deposit 1000000000ufury --type "Text" --title "Example Proposal" --description "This is an example proposal" --gas auto --gas-adjustment 1.2 --from dev-wallet --gas-prices 0.01ufury -y
 
 # setup god's wallet
-echo "${KAVA_TESTNET_GOD_MNEMONIC}" | kava keys add --recover god
+echo "${FURY_TESTNET_GOD_MNEMONIC}" | fury keys add --recover god
 
 # create template string for the proposal we want to enact
 # https://incubus-network.atlassian.net/wiki/spaces/ENG/pages/1228537857/Submitting+Governance+Proposals+WIP
@@ -123,7 +123,7 @@ PARAM_CHANGE_PROP_TEMPLATE=$(
         {
             "subspace": "evmutil",
             "key": "EnabledConversionPairs",
-            "value": "[{\"kava_erc20_address\":\"MULTICHAIN_USDC_CONTRACT_ADDRESS\",\"denom\":\"erc20/multichain/usdc\"},{\"kava_erc20_address\":\"MULTICHAIN_USDT_CONTRACT_ADDRESS\",\"denom\":\"erc20/multichain/usdt\"},{\"kava_erc20_address\":\"MULTICHAIN_wBTC_CONTRACT_ADDRESS\",\"denom\":\"erc20/multichain/wbtc\"},{\"kava_erc20_address\":\"AXL_USDC_CONTRACT_ADDRESS\",\"denom\":\"erc20/axelar/usdc\"},{\"kava_erc20_address\":\"AXL_WBTC_CONTRACT_ADDRESS\",\"denom\":\"erc20/axelar/wbtc\"},{\"kava_erc20_address\":\"wETH_CONTRACT_ADDRESS\",\"denom\":\"erc20/axelar/eth\"},{\"kava_erc20_address\":\"TETHER_USDT_CONTRACT_ADDRESS\",\"denom\":\"erc20/tether/usdt\"}]"
+            "value": "[{\"fury_erc20_address\":\"MULTICHAIN_USDC_CONTRACT_ADDRESS\",\"denom\":\"erc20/multichain/usdc\"},{\"fury_erc20_address\":\"MULTICHAIN_USDT_CONTRACT_ADDRESS\",\"denom\":\"erc20/multichain/usdt\"},{\"fury_erc20_address\":\"MULTICHAIN_wBTC_CONTRACT_ADDRESS\",\"denom\":\"erc20/multichain/wbtc\"},{\"fury_erc20_address\":\"AXL_USDC_CONTRACT_ADDRESS\",\"denom\":\"erc20/axelar/usdc\"},{\"fury_erc20_address\":\"AXL_WBTC_CONTRACT_ADDRESS\",\"denom\":\"erc20/axelar/wbtc\"},{\"fury_erc20_address\":\"wETH_CONTRACT_ADDRESS\",\"denom\":\"erc20/axelar/eth\"},{\"fury_erc20_address\":\"TETHER_USDT_CONTRACT_ADDRESS\",\"denom\":\"erc20/tether/usdt\"}]"
         }
     ]
 }
@@ -149,26 +149,26 @@ touch $proposalFileName
 echo "$finalProposal" >$proposalFileName
 
 # snapshot original module params
-originalEvmUtilParams=$(curl https://api.app.internal.testnet.us-east.production.kava.io/kava/evmutil/v1beta1/params)
+originalEvmUtilParams=$(curl https://api.app.internal.testnet.us-east.production.fury.io/fury/evmutil/v1beta1/params)
 printf "original evm util module params\n %s" , "$originalEvmUtilParams"
 
 # change the params of the chain like a god - make it so 🖖🏽
 # make sure to update god committee member permissions for the module
 # and params being updated (see below for example)
-# https://github.com/Incubus-Network/kava/pull/1556/files#diff-0bd6043650c708661f37bbe6fa5b29b52149e0ec0069103c3954168fc9f12612R900-R903
+# https://github.com/Incubus-Network/fury/pull/1556/files#diff-0bd6043650c708661f37bbe6fa5b29b52149e0ec0069103c3954168fc9f12612R900-R903
 # committee 1 is the stability committee. on internal testnet, this has only one member.
-kava tx committee submit-proposal 1 "$proposalFileName" --gas 2000000 --gas-prices 0.01ukava --from god -y
+fury tx committee submit-proposal 1 "$proposalFileName" --gas 2000000 --gas-prices 0.01ufury --from god -y
 
 # vote on the proposal. this assumes no other committee proposal has ever been submitted (id=1)
-kava tx committee vote 1 yes --gas 2000000 --gas-prices 0.01ukava --from god -y
+fury tx committee vote 1 yes --gas 2000000 --gas-prices 0.01ufury --from god -y
 
 # fetch current module params
-updatedEvmUtilParams=$(curl https://api.app.internal.testnet.us-east.production.kava.io/kava/evmutil/v1beta1/params)
+updatedEvmUtilParams=$(curl https://api.app.internal.testnet.us-east.production.fury.io/fury/evmutil/v1beta1/params)
 printf "updated evm util module params\n %s" , "$updatedEvmUtilParams"
 
 # if adding more cosmos coins -> er20s, ensure that the deployment order below remains the same.
 # convert 1 HARD to an erc20. doing this ensures the contract is deployed.
-kava tx evmutil convert-cosmos-coin-to-erc20 \
+fury tx evmutil convert-cosmos-coin-to-erc20 \
   "$DEV_TEST_WALLET_ADDRESS" \
   1000000hard \
-  --from dev-wallet --gas 2000000 --gas-prices 0.001ukava -y
+  --from dev-wallet --gas 2000000 --gas-prices 0.001ufury -y
