@@ -11,7 +11,7 @@ order: 2
 ```go
 // Params governance parameters for the incentive module
 type Params struct {
-	USDXMintingRewardPeriods RewardPeriods      `json:"usdx_minting_reward_periods" yaml:"usdx_minting_reward_periods"`
+	MUSDMintingRewardPeriods RewardPeriods      `json:"musd_minting_reward_periods" yaml:"musd_minting_reward_periods"`
 	HardSupplyRewardPeriods  MultiRewardPeriods `json:"hard_supply_reward_periods" yaml:"hard_supply_reward_periods"`
 	HardBorrowRewardPeriods  MultiRewardPeriods `json:"hard_borrow_reward_periods" yaml:"hard_borrow_reward_periods"`
 	DelegatorRewardPeriods   MultiRewardPeriods `json:"delegator_reward_periods" yaml:"delegator_reward_periods"`
@@ -55,13 +55,13 @@ type MultiRewardPeriod struct {
 type GenesisState struct {
 	Params Params `json:"params" yaml:"params"`
 
-	USDXRewardState       GenesisRewardState `json:"usdx_reward_state" yaml:"usdx_reward_state"`
+	MUSDRewardState       GenesisRewardState `json:"musd_reward_state" yaml:"musd_reward_state"`
 	HardSupplyRewardState GenesisRewardState `json:"hard_supply_reward_state" yaml:"hard_supply_reward_state"`
 	HardBorrowRewardState GenesisRewardState `json:"hard_borrow_reward_state" yaml:"hard_borrow_reward_state"`
 	DelegatorRewardState  GenesisRewardState `json:"delegator_reward_state" yaml:"delegator_reward_state"`
 	SwapRewardState       GenesisRewardState `json:"swap_reward_state" yaml:"swap_reward_state"`
 
-	USDXMintingClaims           USDXMintingClaims           `json:"usdx_minting_claims" yaml:"usdx_minting_claims"`
+	MUSDMintingClaims           MUSDMintingClaims           `json:"musd_minting_claims" yaml:"musd_minting_claims"`
 	HardLiquidityProviderClaims HardLiquidityProviderClaims `json:"hard_liquidity_provider_claims" yaml:"hard_liquidity_provider_claims"`
 	DelegatorClaims             DelegatorClaims             `json:"delegator_claims" yaml:"delegator_claims"`
 	SwapClaims                  SwapClaims                  `json:"swap_claims" yaml:"swap_claims"`
@@ -76,7 +76,7 @@ For complete details for how items are stored, see [keys.go](../types/keys.go).
 
 When users take incentivized actions, the `incentive` module will create or update a `Claim` object in the store, which represents the amount of rewards that the user is eligible to claim. Each `Claim` object contains one or several RewardIndexes, which are used to calculate the amount of rewards a user can claim. There are four defined claim objects:
 
-- `USDXMintingClaim`
+- `MUSDMintingClaim`
 - `HardLiquidityProviderClaim`
 - `DelegatorClaim`
 - `SwapClaim`
@@ -114,8 +114,8 @@ type MultiRewardIndex struct {
 	RewardIndexes  RewardIndexes `json:"reward_indexes" yaml:"reward_indexes"`
 }
 
-// USDXMintingClaim is for USDX minting rewards
-type USDXMintingClaim struct {
+// MUSDMintingClaim is for MUSD minting rewards
+type MUSDMintingClaim struct {
 	BaseClaim     `json:"base_claim" yaml:"base_claim"`
 	RewardIndexes RewardIndexes `json:"reward_indexes" yaml:"reward_indexes"`
 }

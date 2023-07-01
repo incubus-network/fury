@@ -375,7 +375,7 @@
     - [RewardIndexesProto](#fury.incentive.v1beta1.RewardIndexesProto)
     - [SavingsClaim](#fury.incentive.v1beta1.SavingsClaim)
     - [SwapClaim](#fury.incentive.v1beta1.SwapClaim)
-    - [USDXMintingClaim](#fury.incentive.v1beta1.USDXMintingClaim)
+    - [MUSDMintingClaim](#fury.incentive.v1beta1.MUSDMintingClaim)
   
 - [fury/incentive/v1beta1/params.proto](#fury/incentive/v1beta1/params.proto)
     - [MultiRewardPeriod](#fury.incentive.v1beta1.MultiRewardPeriod)
@@ -412,8 +412,8 @@
     - [MsgClaimSavingsRewardResponse](#fury.incentive.v1beta1.MsgClaimSavingsRewardResponse)
     - [MsgClaimSwapReward](#fury.incentive.v1beta1.MsgClaimSwapReward)
     - [MsgClaimSwapRewardResponse](#fury.incentive.v1beta1.MsgClaimSwapRewardResponse)
-    - [MsgClaimUSDXMintingReward](#fury.incentive.v1beta1.MsgClaimUSDXMintingReward)
-    - [MsgClaimUSDXMintingRewardResponse](#fury.incentive.v1beta1.MsgClaimUSDXMintingRewardResponse)
+    - [MsgClaimMUSDMintingReward](#fury.incentive.v1beta1.MsgClaimMUSDMintingReward)
+    - [MsgClaimMUSDMintingRewardResponse](#fury.incentive.v1beta1.MsgClaimMUSDMintingRewardResponse)
     - [Selection](#fury.incentive.v1beta1.Selection)
   
     - [Msg](#fury.incentive.v1beta1.Msg)
@@ -5361,10 +5361,10 @@ SwapClaim stores the swap rewards that can be claimed by owner
 
 
 
-<a name="fury.incentive.v1beta1.USDXMintingClaim"></a>
+<a name="fury.incentive.v1beta1.MUSDMintingClaim"></a>
 
-### USDXMintingClaim
-USDXMintingClaim is for USDX minting rewards
+### MUSDMintingClaim
+MUSDMintingClaim is for MUSD minting rewards
 
 
 | Field | Type | Label | Description |
@@ -5453,7 +5453,7 @@ Params
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| `usdx_minting_reward_periods` | [RewardPeriod](#fury.incentive.v1beta1.RewardPeriod) | repeated |  |
+| `musd_minting_reward_periods` | [RewardPeriod](#fury.incentive.v1beta1.RewardPeriod) | repeated |  |
 | `hard_supply_reward_periods` | [MultiRewardPeriod](#fury.incentive.v1beta1.MultiRewardPeriod) | repeated |  |
 | `hard_borrow_reward_periods` | [MultiRewardPeriod](#fury.incentive.v1beta1.MultiRewardPeriod) | repeated |  |
 | `delegator_reward_periods` | [MultiRewardPeriod](#fury.incentive.v1beta1.MultiRewardPeriod) | repeated |  |
@@ -5544,12 +5544,12 @@ GenesisState is the state that must be provided at genesis.
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | `params` | [Params](#fury.incentive.v1beta1.Params) |  |  |
-| `usdx_reward_state` | [GenesisRewardState](#fury.incentive.v1beta1.GenesisRewardState) |  |  |
+| `musd_reward_state` | [GenesisRewardState](#fury.incentive.v1beta1.GenesisRewardState) |  |  |
 | `hard_supply_reward_state` | [GenesisRewardState](#fury.incentive.v1beta1.GenesisRewardState) |  |  |
 | `hard_borrow_reward_state` | [GenesisRewardState](#fury.incentive.v1beta1.GenesisRewardState) |  |  |
 | `delegator_reward_state` | [GenesisRewardState](#fury.incentive.v1beta1.GenesisRewardState) |  |  |
 | `swap_reward_state` | [GenesisRewardState](#fury.incentive.v1beta1.GenesisRewardState) |  |  |
-| `usdx_minting_claims` | [USDXMintingClaim](#fury.incentive.v1beta1.USDXMintingClaim) | repeated |  |
+| `musd_minting_claims` | [MUSDMintingClaim](#fury.incentive.v1beta1.MUSDMintingClaim) | repeated |  |
 | `hard_liquidity_provider_claims` | [HardLiquidityProviderClaim](#fury.incentive.v1beta1.HardLiquidityProviderClaim) | repeated |  |
 | `delegator_claims` | [DelegatorClaim](#fury.incentive.v1beta1.DelegatorClaim) | repeated |  |
 | `swap_claims` | [SwapClaim](#fury.incentive.v1beta1.SwapClaim) | repeated |  |
@@ -5647,7 +5647,7 @@ QueryRewardFactorsResponse is the response type for the Query/RewardFactors RPC 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| `usdx_minting_reward_factors` | [RewardIndex](#fury.incentive.v1beta1.RewardIndex) | repeated |  |
+| `musd_minting_reward_factors` | [RewardIndex](#fury.incentive.v1beta1.RewardIndex) | repeated |  |
 | `hard_supply_reward_factors` | [MultiRewardIndex](#fury.incentive.v1beta1.MultiRewardIndex) | repeated |  |
 | `hard_borrow_reward_factors` | [MultiRewardIndex](#fury.incentive.v1beta1.MultiRewardIndex) | repeated |  |
 | `delegator_reward_factors` | [MultiRewardIndex](#fury.incentive.v1beta1.MultiRewardIndex) | repeated |  |
@@ -5685,7 +5685,7 @@ QueryRewardsResponse is the response type for the Query/Rewards RPC method.
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| `usdx_minting_claims` | [USDXMintingClaim](#fury.incentive.v1beta1.USDXMintingClaim) | repeated |  |
+| `musd_minting_claims` | [MUSDMintingClaim](#fury.incentive.v1beta1.MUSDMintingClaim) | repeated |  |
 | `hard_liquidity_provider_claims` | [HardLiquidityProviderClaim](#fury.incentive.v1beta1.HardLiquidityProviderClaim) | repeated |  |
 | `delegator_claims` | [DelegatorClaim](#fury.incentive.v1beta1.DelegatorClaim) | repeated |  |
 | `swap_claims` | [SwapClaim](#fury.incentive.v1beta1.SwapClaim) | repeated |  |
@@ -5856,10 +5856,10 @@ MsgClaimSwapRewardResponse defines the Msg/ClaimSwapReward response type.
 
 
 
-<a name="fury.incentive.v1beta1.MsgClaimUSDXMintingReward"></a>
+<a name="fury.incentive.v1beta1.MsgClaimMUSDMintingReward"></a>
 
-### MsgClaimUSDXMintingReward
-MsgClaimUSDXMintingReward message type used to claim USDX minting rewards
+### MsgClaimMUSDMintingReward
+MsgClaimMUSDMintingReward message type used to claim MUSD minting rewards
 
 
 | Field | Type | Label | Description |
@@ -5872,10 +5872,10 @@ MsgClaimUSDXMintingReward message type used to claim USDX minting rewards
 
 
 
-<a name="fury.incentive.v1beta1.MsgClaimUSDXMintingRewardResponse"></a>
+<a name="fury.incentive.v1beta1.MsgClaimMUSDMintingRewardResponse"></a>
 
-### MsgClaimUSDXMintingRewardResponse
-MsgClaimUSDXMintingRewardResponse defines the Msg/ClaimUSDXMintingReward response type.
+### MsgClaimMUSDMintingRewardResponse
+MsgClaimMUSDMintingRewardResponse defines the Msg/ClaimMUSDMintingReward response type.
 
 
 
@@ -5912,7 +5912,7 @@ Msg defines the incentive Msg service.
 
 | Method Name | Request Type | Response Type | Description | HTTP Verb | Endpoint |
 | ----------- | ------------ | ------------- | ------------| ------- | -------- |
-| `ClaimUSDXMintingReward` | [MsgClaimUSDXMintingReward](#fury.incentive.v1beta1.MsgClaimUSDXMintingReward) | [MsgClaimUSDXMintingRewardResponse](#fury.incentive.v1beta1.MsgClaimUSDXMintingRewardResponse) | ClaimUSDXMintingReward is a message type used to claim USDX minting rewards | |
+| `ClaimMUSDMintingReward` | [MsgClaimMUSDMintingReward](#fury.incentive.v1beta1.MsgClaimMUSDMintingReward) | [MsgClaimMUSDMintingRewardResponse](#fury.incentive.v1beta1.MsgClaimMUSDMintingRewardResponse) | ClaimMUSDMintingReward is a message type used to claim MUSD minting rewards | |
 | `ClaimHardReward` | [MsgClaimHardReward](#fury.incentive.v1beta1.MsgClaimHardReward) | [MsgClaimHardRewardResponse](#fury.incentive.v1beta1.MsgClaimHardRewardResponse) | ClaimHardReward is a message type used to claim Hard liquidity provider rewards | |
 | `ClaimDelegatorReward` | [MsgClaimDelegatorReward](#fury.incentive.v1beta1.MsgClaimDelegatorReward) | [MsgClaimDelegatorRewardResponse](#fury.incentive.v1beta1.MsgClaimDelegatorRewardResponse) | ClaimDelegatorReward is a message type used to claim delegator rewards | |
 | `ClaimSwapReward` | [MsgClaimSwapReward](#fury.incentive.v1beta1.MsgClaimSwapReward) | [MsgClaimSwapRewardResponse](#fury.incentive.v1beta1.MsgClaimSwapRewardResponse) | ClaimSwapReward is a message type used to claim swap rewards | |

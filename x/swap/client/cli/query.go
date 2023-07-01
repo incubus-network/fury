@@ -73,9 +73,9 @@ func queryDepositsCmd(queryRoute string) *cobra.Command {
 		Short: "get liquidity provider deposits",
 		Long: strings.TrimSpace(`get liquidity provider deposits:
  		Example:
- 		$ kvcli q swap deposits --pool bnb:usdx
+ 		$ kvcli q swap deposits --pool bnb:musd
  		$ kvcli q swap deposits --owner fury1l0xsq2z7gqd7yly0g40y5836g0appumark77ny
- 		$ kvcli q swap deposits --pool bnb:usdx --owner fury1l0xsq2z7gqd7yly0g40y5836g0appumark77ny
+ 		$ kvcli q swap deposits --pool bnb:musd --owner fury1l0xsq2z7gqd7yly0g40y5836g0appumark77ny
  		$ kvcli q swap deposits --page=2 --limit=100
  		`,
 		),

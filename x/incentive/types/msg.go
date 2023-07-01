@@ -11,14 +11,14 @@ const MaxDenomsToClaim = 1000
 
 // ensure Msg interface compliance at compile time
 var (
-	_ sdk.Msg = &MsgClaimUSDXMintingReward{}
+	_ sdk.Msg = &MsgClaimMUSDMintingReward{}
 	_ sdk.Msg = &MsgClaimHardReward{}
 	_ sdk.Msg = &MsgClaimDelegatorReward{}
 	_ sdk.Msg = &MsgClaimSwapReward{}
 	_ sdk.Msg = &MsgClaimSavingsReward{}
 	_ sdk.Msg = &MsgClaimEarnReward{}
 
-	_ legacytx.LegacyMsg = &MsgClaimUSDXMintingReward{}
+	_ legacytx.LegacyMsg = &MsgClaimMUSDMintingReward{}
 	_ legacytx.LegacyMsg = &MsgClaimHardReward{}
 	_ legacytx.LegacyMsg = &MsgClaimDelegatorReward{}
 	_ legacytx.LegacyMsg = &MsgClaimSwapReward{}
@@ -27,7 +27,7 @@ var (
 )
 
 const (
-	TypeMsgClaimUSDXMintingReward = "claim_usdx_minting_reward"
+	TypeMsgClaimMUSDMintingReward = "claim_musd_minting_reward"
 	TypeMsgClaimHardReward        = "claim_hard_reward"
 	TypeMsgClaimDelegatorReward   = "claim_delegator_reward"
 	TypeMsgClaimSwapReward        = "claim_swap_reward"
@@ -35,22 +35,22 @@ const (
 	TypeMsgClaimEarnReward        = "claim_earn_reward"
 )
 
-// NewMsgClaimUSDXMintingReward returns a new MsgClaimUSDXMintingReward.
-func NewMsgClaimUSDXMintingReward(sender string, multiplierName string) MsgClaimUSDXMintingReward {
-	return MsgClaimUSDXMintingReward{
+// NewMsgClaimMUSDMintingReward returns a new MsgClaimMUSDMintingReward.
+func NewMsgClaimMUSDMintingReward(sender string, multiplierName string) MsgClaimMUSDMintingReward {
+	return MsgClaimMUSDMintingReward{
 		Sender:         sender,
 		MultiplierName: multiplierName,
 	}
 }
 
 // Route return the message type used for routing the message.
-func (msg MsgClaimUSDXMintingReward) Route() string { return RouterKey }
+func (msg MsgClaimMUSDMintingReward) Route() string { return RouterKey }
 
 // Type returns a human-readable string for the message, intended for utilization within tags.
-func (msg MsgClaimUSDXMintingReward) Type() string { return TypeMsgClaimUSDXMintingReward }
+func (msg MsgClaimMUSDMintingReward) Type() string { return TypeMsgClaimMUSDMintingReward }
 
 // ValidateBasic does a simple validation check that doesn't require access to state.
-func (msg MsgClaimUSDXMintingReward) ValidateBasic() error {
+func (msg MsgClaimMUSDMintingReward) ValidateBasic() error {
 	_, err := sdk.AccAddressFromBech32(msg.Sender)
 	if err != nil {
 		return errorsmod.Wrap(sdkerrors.ErrInvalidAddress, "sender address cannot be empty or invalid")
@@ -62,13 +62,13 @@ func (msg MsgClaimUSDXMintingReward) ValidateBasic() error {
 }
 
 // GetSignBytes gets the canonical byte representation of the Msg.
-func (msg MsgClaimUSDXMintingReward) GetSignBytes() []byte {
+func (msg MsgClaimMUSDMintingReward) GetSignBytes() []byte {
 	bz := ModuleCdc.MustMarshalJSON(&msg)
 	return sdk.MustSortJSON(bz)
 }
 
 // GetSigners returns the addresses of signers that must sign.
-func (msg MsgClaimUSDXMintingReward) GetSigners() []sdk.AccAddress {
+func (msg MsgClaimMUSDMintingReward) GetSigners() []sdk.AccAddress {
 	sender, err := sdk.AccAddressFromBech32(msg.Sender)
 	if err != nil {
 		panic(err)

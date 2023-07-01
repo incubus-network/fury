@@ -5,10 +5,10 @@ const (
 	QueryCirculatingSupply     = "circulating-supply"
 	QueryTotalSupply           = "total-supply"
 	QueryCirculatingSupplyHARD = "circulating-supply-hard"
-	QueryCirculatingSupplyUSDX = "circulating-supply-usdx"
+	QueryCirculatingSupplyMUSD = "circulating-supply-musd"
 	QueryCirculatingSupplySWP  = "circulating-supply-swp"
 	QueryTotalSupplyHARD       = "total-supply-hard"
-	QueryTotalSupplyUSDX       = "total-supply-usdx"
+	QueryTotalSupplyMUSD       = "total-supply-musd"
 )
 
 // BaseQueryParams defines the parameters necessary for querying for all Evidence.

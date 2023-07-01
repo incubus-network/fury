@@ -91,7 +91,7 @@ import (
 // 		Denom:               "bnb",
 // 		Type:                "bnb-a",
 // 		LiquidationRatio:    testutil.D("1.5"),
-// 		DebtLimit:           testutil.C("usdx", 1000000000000),
+// 		DebtLimit:           testutil.C("musd", 1000000000000),
 // 		StabilityFee:        testutil.D("1.000000001547125958"), // %5 apr
 // 		LiquidationPenalty:  testutil.D("0.05"),
 // 		AuctionSize:         i(100),
@@ -106,7 +106,7 @@ import (
 
 // 	newValidCP := make(cdptypes.CollateralParams, len(testCP))
 // 	copy(newValidCP, testCP)
-// 	newValidCP[0].DebtLimit = testutil.C("usdx", 500000000000)
+// 	newValidCP[0].DebtLimit = testutil.C("musd", 500000000000)
 
 // 	newInvalidCP := make(cdptypes.CollateralParams, len(testCP))
 // 	copy(newInvalidCP, testCP)
@@ -882,7 +882,7 @@ var _ types.PubProposal = &UnregisteredPubProposal{}
 // 				[]paramsproposal.ParamChange{{
 // 					Subspace: cdptypes.ModuleName,
 // 					Key:      string(cdptypes.KeyGlobalDebtLimit),
-// 					Value:    string(types.ModuleCdc.MustMarshalJSON(c("usdx", 100000000000))),
+// 					Value:    string(types.ModuleCdc.MustMarshalJSON(c("musd", 100000000000))),
 // 				}},
 // 			),
 // 			expectErr: false,
@@ -936,7 +936,7 @@ var _ types.PubProposal = &UnregisteredPubProposal{}
 // 				[]paramsproposal.ParamChange{{
 // 					Subspace: cdptypes.ModuleName,
 // 					Key:      string(cdptypes.KeyGlobalDebtLimit),
-// 					Value:    `{"denom": "usdx",`,
+// 					Value:    `{"denom": "musd",`,
 // 				}},
 // 			),
 // 			expectErr: true,

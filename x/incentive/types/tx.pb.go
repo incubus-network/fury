@@ -68,24 +68,24 @@ func (m *Selection) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Selection proto.InternalMessageInfo
 
-// MsgClaimUSDXMintingReward message type used to claim USDX minting rewards
-type MsgClaimUSDXMintingReward struct {
+// MsgClaimMUSDMintingReward message type used to claim MUSD minting rewards
+type MsgClaimMUSDMintingReward struct {
 	Sender         string `protobuf:"bytes,1,opt,name=sender,proto3" json:"sender,omitempty"`
 	MultiplierName string `protobuf:"bytes,2,opt,name=multiplier_name,json=multiplierName,proto3" json:"multiplier_name,omitempty"`
 }
 
-func (m *MsgClaimUSDXMintingReward) Reset()         { *m = MsgClaimUSDXMintingReward{} }
-func (m *MsgClaimUSDXMintingReward) String() string { return proto.CompactTextString(m) }
-func (*MsgClaimUSDXMintingReward) ProtoMessage()    {}
-func (*MsgClaimUSDXMintingReward) Descriptor() ([]byte, []int) {
+func (m *MsgClaimMUSDMintingReward) Reset()         { *m = MsgClaimMUSDMintingReward{} }
+func (m *MsgClaimMUSDMintingReward) String() string { return proto.CompactTextString(m) }
+func (*MsgClaimMUSDMintingReward) ProtoMessage()    {}
+func (*MsgClaimMUSDMintingReward) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e6e1c6edfdd8e91a, []int{1}
 }
-func (m *MsgClaimUSDXMintingReward) XXX_Unmarshal(b []byte) error {
+func (m *MsgClaimMUSDMintingReward) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *MsgClaimUSDXMintingReward) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *MsgClaimMUSDMintingReward) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_MsgClaimUSDXMintingReward.Marshal(b, m, deterministic)
+		return xxx_messageInfo_MsgClaimMUSDMintingReward.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -95,34 +95,34 @@ func (m *MsgClaimUSDXMintingReward) XXX_Marshal(b []byte, deterministic bool) ([
 		return b[:n], nil
 	}
 }
-func (m *MsgClaimUSDXMintingReward) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MsgClaimUSDXMintingReward.Merge(m, src)
+func (m *MsgClaimMUSDMintingReward) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgClaimMUSDMintingReward.Merge(m, src)
 }
-func (m *MsgClaimUSDXMintingReward) XXX_Size() int {
+func (m *MsgClaimMUSDMintingReward) XXX_Size() int {
 	return m.Size()
 }
-func (m *MsgClaimUSDXMintingReward) XXX_DiscardUnknown() {
-	xxx_messageInfo_MsgClaimUSDXMintingReward.DiscardUnknown(m)
+func (m *MsgClaimMUSDMintingReward) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgClaimMUSDMintingReward.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_MsgClaimUSDXMintingReward proto.InternalMessageInfo
+var xxx_messageInfo_MsgClaimMUSDMintingReward proto.InternalMessageInfo
 
-// MsgClaimUSDXMintingRewardResponse defines the Msg/ClaimUSDXMintingReward response type.
-type MsgClaimUSDXMintingRewardResponse struct {
+// MsgClaimMUSDMintingRewardResponse defines the Msg/ClaimMUSDMintingReward response type.
+type MsgClaimMUSDMintingRewardResponse struct {
 }
 
-func (m *MsgClaimUSDXMintingRewardResponse) Reset()         { *m = MsgClaimUSDXMintingRewardResponse{} }
-func (m *MsgClaimUSDXMintingRewardResponse) String() string { return proto.CompactTextString(m) }
-func (*MsgClaimUSDXMintingRewardResponse) ProtoMessage()    {}
-func (*MsgClaimUSDXMintingRewardResponse) Descriptor() ([]byte, []int) {
+func (m *MsgClaimMUSDMintingRewardResponse) Reset()         { *m = MsgClaimMUSDMintingRewardResponse{} }
+func (m *MsgClaimMUSDMintingRewardResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgClaimMUSDMintingRewardResponse) ProtoMessage()    {}
+func (*MsgClaimMUSDMintingRewardResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e6e1c6edfdd8e91a, []int{2}
 }
-func (m *MsgClaimUSDXMintingRewardResponse) XXX_Unmarshal(b []byte) error {
+func (m *MsgClaimMUSDMintingRewardResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *MsgClaimUSDXMintingRewardResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *MsgClaimMUSDMintingRewardResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_MsgClaimUSDXMintingRewardResponse.Marshal(b, m, deterministic)
+		return xxx_messageInfo_MsgClaimMUSDMintingRewardResponse.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -132,17 +132,17 @@ func (m *MsgClaimUSDXMintingRewardResponse) XXX_Marshal(b []byte, deterministic 
 		return b[:n], nil
 	}
 }
-func (m *MsgClaimUSDXMintingRewardResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MsgClaimUSDXMintingRewardResponse.Merge(m, src)
+func (m *MsgClaimMUSDMintingRewardResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgClaimMUSDMintingRewardResponse.Merge(m, src)
 }
-func (m *MsgClaimUSDXMintingRewardResponse) XXX_Size() int {
+func (m *MsgClaimMUSDMintingRewardResponse) XXX_Size() int {
 	return m.Size()
 }
-func (m *MsgClaimUSDXMintingRewardResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_MsgClaimUSDXMintingRewardResponse.DiscardUnknown(m)
+func (m *MsgClaimMUSDMintingRewardResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgClaimMUSDMintingRewardResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_MsgClaimUSDXMintingRewardResponse proto.InternalMessageInfo
+var xxx_messageInfo_MsgClaimMUSDMintingRewardResponse proto.InternalMessageInfo
 
 // MsgClaimHardReward message type used to claim Hard liquidity provider rewards
 type MsgClaimHardReward struct {
@@ -526,8 +526,8 @@ var xxx_messageInfo_MsgClaimEarnRewardResponse proto.InternalMessageInfo
 
 func init() {
 	proto.RegisterType((*Selection)(nil), "fury.incentive.v1beta1.Selection")
-	proto.RegisterType((*MsgClaimUSDXMintingReward)(nil), "fury.incentive.v1beta1.MsgClaimUSDXMintingReward")
-	proto.RegisterType((*MsgClaimUSDXMintingRewardResponse)(nil), "fury.incentive.v1beta1.MsgClaimUSDXMintingRewardResponse")
+	proto.RegisterType((*MsgClaimMUSDMintingReward)(nil), "fury.incentive.v1beta1.MsgClaimMUSDMintingReward")
+	proto.RegisterType((*MsgClaimMUSDMintingRewardResponse)(nil), "fury.incentive.v1beta1.MsgClaimMUSDMintingRewardResponse")
 	proto.RegisterType((*MsgClaimHardReward)(nil), "fury.incentive.v1beta1.MsgClaimHardReward")
 	proto.RegisterType((*MsgClaimHardRewardResponse)(nil), "fury.incentive.v1beta1.MsgClaimHardRewardResponse")
 	proto.RegisterType((*MsgClaimDelegatorReward)(nil), "fury.incentive.v1beta1.MsgClaimDelegatorReward")
@@ -592,8 +592,8 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type MsgClient interface {
-	// ClaimUSDXMintingReward is a message type used to claim USDX minting rewards
-	ClaimUSDXMintingReward(ctx context.Context, in *MsgClaimUSDXMintingReward, opts ...grpc.CallOption) (*MsgClaimUSDXMintingRewardResponse, error)
+	// ClaimMUSDMintingReward is a message type used to claim MUSD minting rewards
+	ClaimMUSDMintingReward(ctx context.Context, in *MsgClaimMUSDMintingReward, opts ...grpc.CallOption) (*MsgClaimMUSDMintingRewardResponse, error)
 	// ClaimHardReward is a message type used to claim Hard liquidity provider rewards
 	ClaimHardReward(ctx context.Context, in *MsgClaimHardReward, opts ...grpc.CallOption) (*MsgClaimHardRewardResponse, error)
 	// ClaimDelegatorReward is a message type used to claim delegator rewards
@@ -614,9 +614,9 @@ func NewMsgClient(cc grpc1.ClientConn) MsgClient {
 	return &msgClient{cc}
 }
 
-func (c *msgClient) ClaimUSDXMintingReward(ctx context.Context, in *MsgClaimUSDXMintingReward, opts ...grpc.CallOption) (*MsgClaimUSDXMintingRewardResponse, error) {
-	out := new(MsgClaimUSDXMintingRewardResponse)
-	err := c.cc.Invoke(ctx, "/fury.incentive.v1beta1.Msg/ClaimUSDXMintingReward", in, out, opts...)
+func (c *msgClient) ClaimMUSDMintingReward(ctx context.Context, in *MsgClaimMUSDMintingReward, opts ...grpc.CallOption) (*MsgClaimMUSDMintingRewardResponse, error) {
+	out := new(MsgClaimMUSDMintingRewardResponse)
+	err := c.cc.Invoke(ctx, "/fury.incentive.v1beta1.Msg/ClaimMUSDMintingReward", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -670,8 +670,8 @@ func (c *msgClient) ClaimEarnReward(ctx context.Context, in *MsgClaimEarnReward,
 
 // MsgServer is the server API for Msg service.
 type MsgServer interface {
-	// ClaimUSDXMintingReward is a message type used to claim USDX minting rewards
-	ClaimUSDXMintingReward(context.Context, *MsgClaimUSDXMintingReward) (*MsgClaimUSDXMintingRewardResponse, error)
+	// ClaimMUSDMintingReward is a message type used to claim MUSD minting rewards
+	ClaimMUSDMintingReward(context.Context, *MsgClaimMUSDMintingReward) (*MsgClaimMUSDMintingRewardResponse, error)
 	// ClaimHardReward is a message type used to claim Hard liquidity provider rewards
 	ClaimHardReward(context.Context, *MsgClaimHardReward) (*MsgClaimHardRewardResponse, error)
 	// ClaimDelegatorReward is a message type used to claim delegator rewards
@@ -688,8 +688,8 @@ type MsgServer interface {
 type UnimplementedMsgServer struct {
 }
 
-func (*UnimplementedMsgServer) ClaimUSDXMintingReward(ctx context.Context, req *MsgClaimUSDXMintingReward) (*MsgClaimUSDXMintingRewardResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ClaimUSDXMintingReward not implemented")
+func (*UnimplementedMsgServer) ClaimMUSDMintingReward(ctx context.Context, req *MsgClaimMUSDMintingReward) (*MsgClaimMUSDMintingRewardResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ClaimMUSDMintingReward not implemented")
 }
 func (*UnimplementedMsgServer) ClaimHardReward(ctx context.Context, req *MsgClaimHardReward) (*MsgClaimHardRewardResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ClaimHardReward not implemented")
@@ -711,20 +711,20 @@ func RegisterMsgServer(s grpc1.Server, srv MsgServer) {
 	s.RegisterService(&_Msg_serviceDesc, srv)
 }
 
-func _Msg_ClaimUSDXMintingReward_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MsgClaimUSDXMintingReward)
+func _Msg_ClaimMUSDMintingReward_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgClaimMUSDMintingReward)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MsgServer).ClaimUSDXMintingReward(ctx, in)
+		return srv.(MsgServer).ClaimMUSDMintingReward(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/fury.incentive.v1beta1.Msg/ClaimUSDXMintingReward",
+		FullMethod: "/fury.incentive.v1beta1.Msg/ClaimMUSDMintingReward",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MsgServer).ClaimUSDXMintingReward(ctx, req.(*MsgClaimUSDXMintingReward))
+		return srv.(MsgServer).ClaimMUSDMintingReward(ctx, req.(*MsgClaimMUSDMintingReward))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -824,8 +824,8 @@ var _Msg_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*MsgServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "ClaimUSDXMintingReward",
-			Handler:    _Msg_ClaimUSDXMintingReward_Handler,
+			MethodName: "ClaimMUSDMintingReward",
+			Handler:    _Msg_ClaimMUSDMintingReward_Handler,
 		},
 		{
 			MethodName: "ClaimHardReward",
@@ -889,7 +889,7 @@ func (m *Selection) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *MsgClaimUSDXMintingReward) Marshal() (dAtA []byte, err error) {
+func (m *MsgClaimMUSDMintingReward) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -899,12 +899,12 @@ func (m *MsgClaimUSDXMintingReward) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *MsgClaimUSDXMintingReward) MarshalTo(dAtA []byte) (int, error) {
+func (m *MsgClaimMUSDMintingReward) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *MsgClaimUSDXMintingReward) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *MsgClaimMUSDMintingReward) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -926,7 +926,7 @@ func (m *MsgClaimUSDXMintingReward) MarshalToSizedBuffer(dAtA []byte) (int, erro
 	return len(dAtA) - i, nil
 }
 
-func (m *MsgClaimUSDXMintingRewardResponse) Marshal() (dAtA []byte, err error) {
+func (m *MsgClaimMUSDMintingRewardResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -936,12 +936,12 @@ func (m *MsgClaimUSDXMintingRewardResponse) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *MsgClaimUSDXMintingRewardResponse) MarshalTo(dAtA []byte) (int, error) {
+func (m *MsgClaimMUSDMintingRewardResponse) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *MsgClaimUSDXMintingRewardResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *MsgClaimMUSDMintingRewardResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -1312,7 +1312,7 @@ func (m *Selection) Size() (n int) {
 	return n
 }
 
-func (m *MsgClaimUSDXMintingReward) Size() (n int) {
+func (m *MsgClaimMUSDMintingReward) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -1329,7 +1329,7 @@ func (m *MsgClaimUSDXMintingReward) Size() (n int) {
 	return n
 }
 
-func (m *MsgClaimUSDXMintingRewardResponse) Size() (n int) {
+func (m *MsgClaimMUSDMintingRewardResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -1598,7 +1598,7 @@ func (m *Selection) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *MsgClaimUSDXMintingReward) Unmarshal(dAtA []byte) error {
+func (m *MsgClaimMUSDMintingReward) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1621,10 +1621,10 @@ func (m *MsgClaimUSDXMintingReward) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: MsgClaimUSDXMintingReward: wiretype end group for non-group")
+			return fmt.Errorf("proto: MsgClaimMUSDMintingReward: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MsgClaimUSDXMintingReward: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: MsgClaimMUSDMintingReward: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -1712,7 +1712,7 @@ func (m *MsgClaimUSDXMintingReward) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *MsgClaimUSDXMintingRewardResponse) Unmarshal(dAtA []byte) error {
+func (m *MsgClaimMUSDMintingRewardResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1735,10 +1735,10 @@ func (m *MsgClaimUSDXMintingRewardResponse) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: MsgClaimUSDXMintingRewardResponse: wiretype end group for non-group")
+			return fmt.Errorf("proto: MsgClaimMUSDMintingRewardResponse: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MsgClaimUSDXMintingRewardResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: MsgClaimMUSDMintingRewardResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		default:

@@ -10729,7 +10729,7 @@ paths:
               params:
                 type: object
                 properties:
-                  usdx_minting_reward_periods:
+                  musd_minting_reward_periods:
                     type: array
                     items:
                       type: object
@@ -11033,7 +11033,7 @@ paths:
           schema:
             type: object
             properties:
-              usdx_minting_reward_factors:
+              musd_minting_reward_factors:
                 type: array
                 items:
                   type: object
@@ -11207,7 +11207,7 @@ paths:
           schema:
             type: object
             properties:
-              usdx_minting_claims:
+              musd_minting_claims:
                 type: array
                 items:
                   type: object
@@ -11246,7 +11246,7 @@ paths:
                             type: string
                             format: byte
                         title: RewardIndex stores reward accumulation information
-                  title: USDXMintingClaim is for USDX minting rewards
+                  title: MUSDMintingClaim is for MUSD minting rewards
               hard_liquidity_provider_claims:
                 type: array
                 items:
@@ -57973,17 +57973,17 @@ paths:
                 example: '63750000'
         '500':
           description: Server internal error
-  /vesting/circulatingsupplyusdx:
+  /vesting/circulatingsupplymusd:
     get:
       deprecated: true
-      summary: Get the current circulating supply of USDX
+      summary: Get the current circulating supply of MUSD
       tags:
         - Vesting
       produces:
         - application/json
       responses:
         '200':
-          description: USDX circulating supply
+          description: MUSD circulating supply
           schema:
             properties:
               height:
@@ -57994,17 +57994,17 @@ paths:
                 example: '63750000'
         '500':
           description: Server internal error
-  /vesting/totalsupplyusdx:
+  /vesting/totalsupplymusd:
     get:
       deprecated: true
-      summary: Get the total supply of USDX
+      summary: Get the total supply of MUSD
       tags:
         - Vesting
       produces:
         - application/json
       responses:
         '200':
-          description: USDX total supply
+          description: MUSD total supply
           schema:
             properties:
               height:
@@ -63409,7 +63409,7 @@ definitions:
   fury.incentive.v1beta1.Params:
     type: object
     properties:
-      usdx_minting_reward_periods:
+      musd_minting_reward_periods:
         type: array
         items:
           type: object
@@ -63690,7 +63690,7 @@ definitions:
       params:
         type: object
         properties:
-          usdx_minting_reward_periods:
+          musd_minting_reward_periods:
             type: array
             items:
               type: object
@@ -63951,7 +63951,7 @@ definitions:
   fury.incentive.v1beta1.QueryRewardFactorsResponse:
     type: object
     properties:
-      usdx_minting_reward_factors:
+      musd_minting_reward_factors:
         type: array
         items:
           type: object
@@ -64094,7 +64094,7 @@ definitions:
   fury.incentive.v1beta1.QueryRewardsResponse:
     type: object
     properties:
-      usdx_minting_claims:
+      musd_minting_claims:
         type: array
         items:
           type: object
@@ -64132,7 +64132,7 @@ definitions:
                     type: string
                     format: byte
                 title: RewardIndex stores reward accumulation information
-          title: USDXMintingClaim is for USDX minting rewards
+          title: MUSDMintingClaim is for MUSD minting rewards
       hard_liquidity_provider_claims:
         type: array
         items:
@@ -64549,7 +64549,7 @@ definitions:
             MultiRewardIndex stores reward accumulation information on multiple
             reward types
     title: SwapClaim stores the swap rewards that can be claimed by owner
-  fury.incentive.v1beta1.USDXMintingClaim:
+  fury.incentive.v1beta1.MUSDMintingClaim:
     type: object
     properties:
       base_claim:
@@ -64585,7 +64585,7 @@ definitions:
               type: string
               format: byte
           title: RewardIndex stores reward accumulation information
-    title: USDXMintingClaim is for USDX minting rewards
+    title: MUSDMintingClaim is for MUSD minting rewards
   fury.issuance.v1beta1.Asset:
     type: object
     properties:

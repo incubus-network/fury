@@ -47,8 +47,8 @@ func GetTxCmd() *cobra.Command {
 func getCmdClaimCdp() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "claim-cdp [multiplier]",
-		Short:   "claim USDX minting rewards using a given multiplier",
-		Long:    `Claim sender's outstanding USDX minting rewards using a given multiplier.`,
+		Short:   "claim MUSD minting rewards using a given multiplier",
+		Long:    `Claim sender's outstanding MUSD minting rewards using a given multiplier.`,
 		Example: fmt.Sprintf(`  $ %s tx %s claim-cdp large`, version.AppName, types.ModuleName),
 		Args:    cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -60,7 +60,7 @@ func getCmdClaimCdp() *cobra.Command {
 			sender := cliCtx.GetFromAddress()
 			multiplier := args[0]
 
-			msg := types.NewMsgClaimUSDXMintingReward(sender.String(), multiplier)
+			msg := types.NewMsgClaimMUSDMintingReward(sender.String(), multiplier)
 			if err := msg.ValidateBasic(); err != nil {
 				return err
 			}

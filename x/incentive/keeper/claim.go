@@ -7,17 +7,17 @@ import (
 	"github.com/incubus-network/fury/x/incentive/types"
 )
 
-// ClaimUSDXMintingReward pays out funds from a claim to a receiver account.
+// ClaimMUSDMintingReward pays out funds from a claim to a receiver account.
 // Rewards are removed from a claim and paid out according to the multiplier, which reduces the reward amount in exchange for shorter vesting times.
-func (k Keeper) ClaimUSDXMintingReward(ctx sdk.Context, owner, receiver sdk.AccAddress, multiplierName string) error {
-	claim, found := k.GetUSDXMintingClaim(ctx, owner)
+func (k Keeper) ClaimMUSDMintingReward(ctx sdk.Context, owner, receiver sdk.AccAddress, multiplierName string) error {
+	claim, found := k.GetMUSDMintingClaim(ctx, owner)
 	if !found {
 		return errorsmod.Wrapf(types.ErrClaimNotFound, "address: %s", owner)
 	}
 
-	multiplier, found := k.GetMultiplierByDenom(ctx, types.USDXMintingRewardDenom, multiplierName)
+	multiplier, found := k.GetMultiplierByDenom(ctx, types.MUSDMintingRewardDenom, multiplierName)
 	if !found {
-		return errorsmod.Wrapf(types.ErrInvalidMultiplier, "denom '%s' has no multiplier '%s'", types.USDXMintingRewardDenom, multiplierName)
+		return errorsmod.Wrapf(types.ErrInvalidMultiplier, "denom '%s' has no multiplier '%s'", types.MUSDMintingRewardDenom, multiplierName)
 	}
 
 	claimEnd := k.GetClaimEnd(ctx)
@@ -26,7 +26,7 @@ func (k Keeper) ClaimUSDXMintingReward(ctx sdk.Context, owner, receiver sdk.AccA
 		return errorsmod.Wrapf(types.ErrClaimExpired, "block time %s > claim end time %s", ctx.BlockTime(), claimEnd)
 	}
 
-	claim, err := k.SynchronizeUSDXMintingClaim(ctx, claim)
+	claim, err := k.SynchronizeMUSDMintingClaim(ctx, claim)
 	if err != nil {
 		return err
 	}
@@ -43,7 +43,7 @@ func (k Keeper) ClaimUSDXMintingReward(ctx sdk.Context, owner, receiver sdk.AccA
 		return err
 	}
 
-	k.ZeroUSDXMintingClaim(ctx, claim)
+	k.ZeroMUSDMintingClaim(ctx, claim)
 
 	ctx.EventManager().EmitEvent(
 		sdk.NewEvent(

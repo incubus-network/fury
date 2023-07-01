@@ -54,9 +54,9 @@ message QueryRewardsRequest {
 
 // QueryRewardsResponse is the response type for the Query/Rewards RPC method.
 message QueryRewardsResponse {
-  repeated USDXMintingClaim usdx_minting_claims = 1 [
-    (gogoproto.customname) = "USDXMintingClaims",
-    (gogoproto.castrepeated) = "USDXMintingClaims",
+  repeated MUSDMintingClaim musd_minting_claims = 1 [
+    (gogoproto.customname) = "MUSDMintingClaims",
+    (gogoproto.castrepeated) = "MUSDMintingClaims",
     (gogoproto.nullable) = false
   ];
 
@@ -91,7 +91,7 @@ message QueryRewardFactorsRequest {}
 
 // QueryRewardFactorsResponse is the response type for the Query/RewardFactors RPC method.
 message QueryRewardFactorsResponse {
-  repeated RewardIndex usdx_minting_reward_factors = 1 [
+  repeated RewardIndex musd_minting_reward_factors = 1 [
     (gogoproto.castrepeated) = "RewardIndexes",
     (gogoproto.nullable) = false
   ];
