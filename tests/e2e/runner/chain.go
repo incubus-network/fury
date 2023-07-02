@@ -74,7 +74,7 @@ var (
 		GrpcUrl:   "http://localhost:9090",
 		EvmRpcUrl: "http://localhost:8545",
 
-		ChainId:      "furylocalnet_8888-1",
+		ChainId:      "furylocalnet_7108-1",
 		StakingDenom: "ufury",
 	}
 	futoolIbcChain = ChainDetails{
@@ -82,7 +82,7 @@ var (
 		GrpcUrl:   "http://localhost:9092",
 		EvmRpcUrl: "http://localhost:8547",
 
-		ChainId:      "furylocalnet_8889-2",
+		ChainId:      "furylocalnet_7109-2",
 		StakingDenom: "uatom",
 	}
 )

@@ -3,7 +3,7 @@ version: '3'
 services:
   fudnode0:
     container_name: fudnode0
-    image: "fury/furynode"
+    image: "fanfury/furynode"
     ports:
       - "26656-26657:26656-26657"
     environment:
